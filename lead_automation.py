@@ -89,6 +89,25 @@ class LeadAutomation:
             print("❌ Some required environment variables are missing")
             return None
 
+    def load_tokens(self):
+        """Loads tokens from environment variables (GitHub Actions) or JSON file (local)."""
+        # First try environment variables (for GitHub Actions)
+        env_tokens = self.load_environment_tokens()
+        if env_tokens:
+            return env_tokens
+        
+        # Fall back to JSON file (for local development)
+        try:
+            if os.path.exists(TOKEN_FILE):
+                with open(TOKEN_FILE, 'r') as f:
+                    return json.load(f)
+            else:
+                print(f"❌ Token file {TOKEN_FILE} not found")
+                return {}
+        except Exception as e:
+            print(f"❌ Error loading tokens: {str(e)}")
+            return {}
+
     def save_tokens(self, token_data):
         """Saves the relevant tokens to the JSON file with timestamp."""
         current_time = datetime.now().isoformat()
