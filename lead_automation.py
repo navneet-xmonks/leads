@@ -7,15 +7,15 @@ from datetime import datetime, timedelta
 import pandas as pd
 
 # --- Configuration ---
-CLIENT_ID = os.getenv('ZOHO_CLIENT_ID', "1000.B67KSFYK94F8VFE7HZTTGGA3PAJ9TH")
-CLIENT_SECRET = os.getenv('ZOHO_CLIENT_SECRET', "0d2670bfca5041de8099ac9da62dd7c0be18d7dd05")
+CLIENT_ID = os.getenv('ZOHO_CLIENT_ID')
+CLIENT_SECRET = os.getenv('ZOHO_CLIENT_SECRET')
 TOKEN_URL = "https://accounts.zoho.com/oauth/v2/token"
 TOKEN_FILE = "zoho_tokens.json"
 LEADS_CSV_FILE = "erickson_leads.csv"
 LAST_RUN_FILE = "last_run.json"
 
 # AiSensy Configuration
-AISENSY_API_KEY = os.getenv('AISENSY_API_KEY', "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY4NjhmMjlkMWRkNzk0MGMwZDFiZjI0NyIsIm5hbWUiOiJFcmlja3NvbiBDb2FjaGluZyAoSnVseSkiLCJhcHBOYW1lIjoiQWlTZW5zeSIsImNsaWVudElkIjoiNjZkODI0YmViNGNiNzYwYjdhODU5Zjg3IiwiYWN0aXZlUGxhbiI6IkZSRUVfRk9SRVZFUiIsImlhdCI6MTc1MTcwODMxN30.2wvMIPAYJZgVEDFTaeK7_dM1yCcYXt2pOg1ljnaN6mE")
+AISENSY_API_KEY = os.getenv('AISENSY_API_KEY')
 CAMPAIGN_NAME = "welcome_test"
 WELCOME_IMAGE_URL = "https://xmonks.com/5eb66e6a-4335-4b78-8279-7c9298332add.jpg"
 IMAGE_FILENAME = "5eb66e6a-4335-4b78-8279-7c9298332add.jpg"
