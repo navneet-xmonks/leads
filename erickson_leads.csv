@@ -1,0 +1,3 @@
+id,first_name,last_name,email,phone,lead_source,referral_code,referral_status,record_status,created_time,modified_time,fetched_at
+3406196000041218045,Karan,Verma,karan.verma@xmonks.com,+919015725735,test,,pending,Available,2025-09-11T11:23:54+05:30,2025-09-11T11:23:54+05:30,2025-09-11T12:43:28.559864
+3406196000041219003,ritik,malik,ritik@test.com,+919599821771,test,,pending,Available,2025-09-11T13:06:11+05:30,2025-09-11T13:06:11+05:30,2025-09-11T13:09:15.887116
