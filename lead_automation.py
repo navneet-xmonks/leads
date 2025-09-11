@@ -14,6 +14,10 @@ TOKEN_FILE = "zoho_tokens.json"
 LEADS_CSV_FILE = "erickson_leads.csv"
 LAST_RUN_FILE = "last_run.json"
 
+# Logging Configuration
+VERBOSE_LOGGING = os.getenv('VERBOSE_LOGGING', 'false').lower() == 'true'
+MAX_DETAILED_LOGS = int(os.getenv('MAX_DETAILED_LOGS', '5'))  # Max detailed logs before suppressing
+
 # AiSensy Configuration
 AISENSY_API_KEY = os.getenv('AISENSY_API_KEY')
 CAMPAIGN_NAME = "welcome_test"
@@ -361,16 +365,29 @@ class LeadAutomation:
             return []
 
     def find_new_leads(self, current_leads):
-        """Compare current leads with existing CSV to find new ones."""
+        """Compare current leads with existing CSV to find new ones - optimized for large datasets."""
         existing_ids = self.get_existing_lead_ids()
         
         new_leads = []
-        for lead in current_leads:
+        total_leads = len(current_leads)
+        
+        print(f"🔍 Checking {total_leads} leads against {len(existing_ids)} existing records...")
+        
+        for i, lead in enumerate(current_leads, 1):
             lead_id = str(lead.get('id', ''))
             if lead_id not in existing_ids:
                 new_leads.append(lead)
+            
+            # Progress update for large datasets
+            if total_leads > 1000 and i % 500 == 0:
+                print(f"📊 Progress: {i}/{total_leads} leads checked...")
         
         print(f"🆕 Found {len(new_leads)} new leads to process")
+        
+        # Alert for large new lead counts
+        if len(new_leads) > 100:
+            print(f"⚠️ LARGE BATCH: {len(new_leads)} new leads detected - this may take a while to process")
+            
         return new_leads
 
     def send_aisensy_message(self, phone, user_name, template_params=None):
@@ -418,24 +435,35 @@ class LeadAutomation:
         successful_sends = 0
         failed_sends = 0
         skipped_sends = 0
+        no_phone_skips = 0
         
-        for lead in new_leads:
+        print(f"📱 Processing {len(new_leads)} leads for messaging...")
+        
+        for i, lead in enumerate(new_leads, 1):
             lead_id = str(lead.get('id', ''))
             phone = lead.get('phone')
             first_name = lead.get('first_name', 'Friend')
             
             # Skip if message already sent to this lead
             if lead_id in existing_leads_with_messages:
-                print(f"⏭️ Skipping {first_name} - message already sent")
                 skipped_sends += 1
+                # Only log first few skips to avoid spam
+                if skipped_sends <= 3:
+                    print(f"⏭️ Skipping {first_name} - message already sent")
+                elif skipped_sends == 4:
+                    print(f"⏭️ ... and {len(new_leads) - i + 1} more leads already processed (suppressing further skip logs)")
                 continue
             
             if not phone:
-                print(f"⚠️ Skipping {first_name} - no phone number")
-                skipped_sends += 1
+                no_phone_skips += 1
+                # Only log first few no-phone skips
+                if no_phone_skips <= 3:
+                    print(f"⚠️ Skipping {first_name} - no phone number")
+                elif no_phone_skips == 4:
+                    print(f"⚠️ ... and more leads without phone numbers (suppressing further logs)")
                 continue
             
-            print(f"📱 Sending welcome message to {first_name} ({phone})")
+            print(f"📱 [{i}/{len(new_leads)}] Sending welcome message to {first_name} ({phone})")
             
             # Send message with first name as template parameter
             response = self.send_aisensy_message(
@@ -454,21 +482,39 @@ class LeadAutomation:
                 print(f"✅ Message sent successfully to {first_name}")
             else:
                 failed_sends += 1
-                print(f"❌ Failed to send message to {first_name}: {response}")
+                # Only log first few failures in detail to avoid spam
+                if failed_sends <= 5:
+                    print(f"❌ Failed to send message to {first_name}: {response}")
+                elif failed_sends == 6:
+                    print(f"❌ ... and more failures (suppressing detailed error logs)")
+                else:
+                    print(f"❌ Failed to send message to {first_name}")
             
             # Update the lead record with message status
             lead['message_sent'] = message_sent_status
             
             # Add small delay to avoid rate limiting
             time.sleep(2)
+            
+            # Progress update for large batches
+            if i % 50 == 0:
+                print(f"📊 Progress: {i}/{len(new_leads)} leads processed...")
         
         # Update CSV with message status
         self.update_message_status_in_csv(new_leads)
         
-        print(f"\n📊 Message Summary:")
-        print(f"✅ Successful: {successful_sends}")
-        print(f"❌ Failed: {failed_sends}")
+        print(f"\n📊 Final Message Summary:")
+        print(f"✅ Successfully sent: {successful_sends}")
+        print(f"❌ Failed to send: {failed_sends}")
         print(f"⏭️ Skipped (already sent): {skipped_sends}")
+        print(f"⚠️ Skipped (no phone): {no_phone_skips}")
+        print(f"📱 Total processed: {len(new_leads)}")
+        
+        # Alert for large skip counts
+        if skipped_sends > 100:
+            print(f"⚠️ HIGH SKIP COUNT: {skipped_sends} leads already have messages sent")
+        if no_phone_skips > 50:
+            print(f"⚠️ HIGH NO-PHONE COUNT: {no_phone_skips} leads missing phone numbers")
     
     def update_message_status_in_csv(self, leads_with_status):
         """Update the CSV file with message sent status for the leads."""

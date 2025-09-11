@@ -24,6 +24,14 @@ jobs:
     - name: Checkout repository
       uses: actions/checkout@v4
       
+    - name: Download previous CSV data
+      uses: actions/download-artifact@v4
+      with:
+        pattern: lead-data-*
+        merge-multiple: true
+        path: ./
+      continue-on-error: true
+      
     - name: Set up Python 3.10
       uses: actions/setup-python@v5
       with:
@@ -60,6 +68,15 @@ jobs:
       run: |
         echo "🚀 Starting lead automation..."
         python lead_automation.py
+        
+    - name: Commit and push CSV updates
+      run: |
+        git config --local user.email "action@github.com"
+        git config --local user.name "GitHub Action"
+        git add erickson_leads.csv last_run.json zoho_tokens.json
+        git diff --staged --quiet || git commit -m "Update lead data - $(date)"
+        git push
+      continue-on-error: true
         
     - name: Upload CSV artifact
       if: always()
