@@ -25,7 +25,7 @@ class LeadAutomation:
         self.leads_csv_headers = [
             'id', 'first_name', 'last_name', 'email', 'phone', 
             'lead_source', 'referral_code', 'referral_status', 'record_status', 
-            'created_time', 'modified_time', 'fetched_at'
+            'created_time', 'modified_time', 'fetched_at', 'message_sent'
         ]
     
     def is_first_run(self):
@@ -304,7 +304,8 @@ class LeadAutomation:
                 'record_status': lead.get('Record_Status__s', ''),
                 'created_time': lead.get('Created_Time', ''),
                 'modified_time': lead.get('Modified_Time', ''),
-                'fetched_at': current_time
+                'fetched_at': current_time,
+                'message_sent': 'No'  # First run, no messages sent yet
             }
             processed_leads.append(processed_lead)
         
@@ -398,20 +399,40 @@ class LeadAutomation:
             return {"status_code": response.status_code, "text": response.text}
 
     def send_welcome_messages_to_new_leads(self, new_leads):
-        """Sends welcome WhatsApp messages to new leads."""
+        """Sends welcome WhatsApp messages to new leads and updates CSV with message status."""
         if not new_leads:
             print("📱 No new leads to send messages to.")
             return
         
+        # Read existing CSV to check for leads that already have messages sent
+        existing_leads_with_messages = set()
+        if os.path.exists(LEADS_CSV_FILE):
+            try:
+                df = pd.read_csv(LEADS_CSV_FILE)
+                # Get IDs of leads that already have messages sent
+                sent_df = df[df.get('message_sent', 'No') == 'Yes']
+                existing_leads_with_messages = set(sent_df['id'].astype(str).tolist())
+            except Exception as e:
+                print(f"⚠️ Error reading message status: {e}")
+        
         successful_sends = 0
         failed_sends = 0
+        skipped_sends = 0
         
         for lead in new_leads:
+            lead_id = str(lead.get('id', ''))
             phone = lead.get('phone')
             first_name = lead.get('first_name', 'Friend')
             
+            # Skip if message already sent to this lead
+            if lead_id in existing_leads_with_messages:
+                print(f"⏭️ Skipping {first_name} - message already sent")
+                skipped_sends += 1
+                continue
+            
             if not phone:
-                print(f"⚠️  Skipping {first_name} - no phone number")
+                print(f"⚠️ Skipping {first_name} - no phone number")
+                skipped_sends += 1
                 continue
             
             print(f"📱 Sending welcome message to {first_name} ({phone})")
@@ -424,21 +445,58 @@ class LeadAutomation:
             )
             
             # Check for success - AiSensy returns 'success': 'true' as string
+            message_sent_status = 'No'
             if (response.get('success') == 'true' or 
                 response.get('status') == 'success' or 
                 response.get('status_code') == 200):
                 successful_sends += 1
+                message_sent_status = 'Yes'
                 print(f"✅ Message sent successfully to {first_name}")
             else:
                 failed_sends += 1
                 print(f"❌ Failed to send message to {first_name}: {response}")
             
+            # Update the lead record with message status
+            lead['message_sent'] = message_sent_status
+            
             # Add small delay to avoid rate limiting
             time.sleep(2)
+        
+        # Update CSV with message status
+        self.update_message_status_in_csv(new_leads)
         
         print(f"\n📊 Message Summary:")
         print(f"✅ Successful: {successful_sends}")
         print(f"❌ Failed: {failed_sends}")
+        print(f"⏭️ Skipped (already sent): {skipped_sends}")
+    
+    def update_message_status_in_csv(self, leads_with_status):
+        """Update the CSV file with message sent status for the leads."""
+        if not os.path.exists(LEADS_CSV_FILE):
+            return
+        
+        try:
+            # Read existing CSV
+            df = pd.read_csv(LEADS_CSV_FILE)
+            
+            # Add message_sent column if it doesn't exist
+            if 'message_sent' not in df.columns:
+                df['message_sent'] = 'No'
+            
+            # Update message status for each lead
+            for lead in leads_with_status:
+                lead_id = str(lead.get('id', ''))
+                message_status = lead.get('message_sent', 'No')
+                
+                # Update the specific lead's message status
+                df.loc[df['id'].astype(str) == lead_id, 'message_sent'] = message_status
+            
+            # Save updated CSV
+            df.to_csv(LEADS_CSV_FILE, index=False)
+            print(f"✅ Updated message status in CSV for {len(leads_with_status)} leads")
+            
+        except Exception as e:
+            print(f"❌ Error updating message status in CSV: {e}")
 
     def run_automation(self):
         """Main automation function - simple flow for testing."""
@@ -501,7 +559,8 @@ class LeadAutomation:
                         'record_status': lead.get('Record_Status__s', ''),
                         'created_time': lead.get('Created_Time', ''),
                         'modified_time': lead.get('Modified_Time', ''),
-                        'fetched_at': datetime.now().isoformat()
+                        'fetched_at': datetime.now().isoformat(),
+                        'message_sent': 'No'  # Will be updated after sending message
                     }
                     processed_new_leads.append(processed_lead)
                 
@@ -520,6 +579,9 @@ class LeadAutomation:
             # First run - save all leads to CSV
             self.save_leads_to_csv(leads)
             print("📝 First run completed. Next run will check for new leads and send messages.")
+        
+        # Save last run time for tracking
+        self.save_last_run_time()
         
         print("\n🎉 Automation process completed!")
         print("=" * 50)
