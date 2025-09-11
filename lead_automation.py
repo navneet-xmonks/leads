@@ -38,8 +38,20 @@ class LeadAutomation:
     
     def save_last_run_time(self):
         """Save the current time as last run time."""
-        with open(LAST_RUN_FILE, 'w') as f:
-            json.dump({'last_run': datetime.now().isoformat()}, f)
+        try:
+            current_time = datetime.now().isoformat()
+            with open(LAST_RUN_FILE, 'w') as f:
+                json.dump({'last_run': current_time}, f, indent=2)
+            print(f"✅ Last run time saved: {current_time}")
+        except Exception as e:
+            print(f"❌ Error saving last run time: {e}")
+            # Still create the file even if there's an error
+            try:
+                with open(LAST_RUN_FILE, 'w') as f:
+                    f.write('{"last_run": "' + datetime.now().isoformat() + '"}')
+                print("✅ Fallback: Last run file created")
+            except Exception as e2:
+                print(f"❌ Critical error creating last run file: {e2}")
     
     def get_last_run_time(self):
         """Get the last run time."""
@@ -629,9 +641,18 @@ class LeadAutomation:
         # Save last run time for tracking
         try:
             self.save_last_run_time()
-            print("✅ Last run time saved")
         except Exception as e:
             print(f"⚠️ Warning: Could not save last run time: {e}")
+        
+        # Double-check that last_run.json exists
+        if not os.path.exists(LAST_RUN_FILE):
+            print("⚠️ Last run file missing, creating backup...")
+            try:
+                with open(LAST_RUN_FILE, 'w') as f:
+                    json.dump({'last_run': datetime.now().isoformat(), 'backup': True}, f)
+                print("✅ Backup last run file created")
+            except Exception as e:
+                print(f"❌ Failed to create backup last run file: {e}")
         
         print("\n🎉 Automation process completed!")
         print("=" * 50)
