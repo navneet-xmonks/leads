@@ -64,29 +64,30 @@ class LeadAutomation:
                 pass
         return None
         
-    def load_tokens(self):
-        """Loads tokens from the JSON file if it exists, or from environment variables."""
-        if os.path.exists(TOKEN_FILE):
-            with open(TOKEN_FILE, 'r') as f:
-                try:
-                    return json.load(f)
-                except json.JSONDecodeError:
-                    return {}
+    def load_environment_tokens(self):
+        """Loads tokens from environment variables (for GitHub Actions)."""
+        print("🔍 Loading tokens from environment variables...")
         
-        # If no token file exists, try to create from environment variables (for GitHub Actions)
-        env_tokens = {}
-        if os.getenv('ZOHO_REFRESH_TOKEN'):
-            env_tokens = {
-                'refresh_token': os.getenv('ZOHO_REFRESH_TOKEN'),
-                'api_domain': os.getenv('ZOHO_API_DOMAIN', 'https://www.zohoapis.com')
+        client_id = os.getenv('ZOHO_CLIENT_ID')
+        client_secret = os.getenv('ZOHO_CLIENT_SECRET')
+        refresh_token = os.getenv('ZOHO_REFRESH_TOKEN')
+        api_domain = os.getenv('ZOHO_API_DOMAIN')
+        
+        print(f"   ZOHO_CLIENT_ID: {'✅ Set' if client_id else '❌ Missing'}")
+        print(f"   ZOHO_CLIENT_SECRET: {'✅ Set' if client_secret else '❌ Missing'}")
+        print(f"   ZOHO_REFRESH_TOKEN: {'✅ Set' if refresh_token else '❌ Missing'}")
+        print(f"   ZOHO_API_DOMAIN: {'✅ Set' if api_domain else '❌ Missing'}")
+        
+        if client_id and client_secret and refresh_token and api_domain:
+            return {
+                'client_id': client_id,
+                'client_secret': client_secret,
+                'refresh_token': refresh_token,
+                'api_domain': api_domain
             }
-            # Save to file for persistence during the run
-            with open(TOKEN_FILE, 'w') as f:
-                json.dump(env_tokens, f, indent=4)
-            print("✅ Initialized tokens from environment variables")
-            return env_tokens
-        
-        return {}
+        else:
+            print("❌ Some required environment variables are missing")
+            return None
 
     def save_tokens(self, token_data):
         """Saves the relevant tokens to the JSON file with timestamp."""
@@ -129,31 +130,42 @@ class LeadAutomation:
             return False
 
     def refresh_access_token(self, refresh_token):
-        """Uses the refresh token to get a new access token."""
-        print("🔄 Refreshing access token...")
-        payload = {
-            'client_id': CLIENT_ID,
-            'client_secret': CLIENT_SECRET,
+        """Refreshes the Zoho API access token using the refresh token."""
+        client_id = os.getenv('ZOHO_CLIENT_ID')
+        client_secret = os.getenv('ZOHO_CLIENT_SECRET')
+        
+        if not client_id or not client_secret:
+            print("❌ Missing ZOHO_CLIENT_ID or ZOHO_CLIENT_SECRET environment variables")
+            return None
+        
+        token_url = "https://accounts.zoho.com/oauth/v2/token"
+        
+        data = {
             'refresh_token': refresh_token,
+            'client_id': client_id,
+            'client_secret': client_secret,
             'grant_type': 'refresh_token'
         }
-
+        
+        print(f"🔄 Making token refresh request to {token_url}")
+        print(f"   Using client_id: {client_id[:8]}..." if client_id else "   No client_id")
+        print(f"   Using refresh_token: {refresh_token[:8]}..." if refresh_token else "   No refresh_token")
+        
         try:
-            response = requests.post(TOKEN_URL, data=payload)
-            response.raise_for_status()
+            response = requests.post(token_url, data=data)
+            print(f"   Response status: {response.status_code}")
             
-            new_token_data = response.json()
-            if 'refresh_token' not in new_token_data:
-                new_token_data['refresh_token'] = refresh_token
-            
-            # Add timestamp for the new access token
-            new_token_data['access_token_timestamp'] = datetime.now().isoformat()
+            if response.status_code == 200:
+                token_data = response.json()
+                print("✅ Token refresh successful")
+                return token_data
+            else:
+                print(f"❌ Token refresh failed: {response.status_code}")
+                print(f"   Response: {response.text}")
+                return None
                 
-            print("✅ Access token refreshed successfully!")
-            return new_token_data
-
-        except requests.exceptions.RequestException as e:
-            print(f"❌ Error refreshing access token: {e}")
+        except Exception as e:
+            print(f"❌ Error refreshing token: {str(e)}")
             return None
 
     def get_valid_token_data(self):
@@ -162,20 +174,16 @@ class LeadAutomation:
         refresh_token = stored_tokens.get('refresh_token')
         
         if not refresh_token:
-            print("❌ No refresh token found. Please run the initial setup first.")
+            print("❌ No refresh token found. Please check ZOHO_REFRESH_TOKEN secret.")
+            print("💡 Make sure you have set the following GitHub Secrets:")
+            print("   - ZOHO_CLIENT_ID")
+            print("   - ZOHO_CLIENT_SECRET") 
+            print("   - ZOHO_REFRESH_TOKEN")
+            print("   - ZOHO_API_DOMAIN")
             return None
         
-        # Check if we have a valid access token that doesn't need refreshing
-        if self.is_access_token_valid(stored_tokens):
-            print("🎯 Using existing valid access token")
-            return {
-                'access_token': stored_tokens.get('access_token'),
-                'refresh_token': refresh_token,
-                'api_domain': stored_tokens.get('api_domain')
-            }
-        
-        # Access token is expired or missing, refresh it
-        print("🔄 Access token needs refreshing...")
+        # Always try to refresh the access token for GitHub Actions to ensure it's valid
+        print("🔄 Refreshing access token for reliability...")
         token_data = self.refresh_access_token(refresh_token)
         
         if token_data and 'access_token' in token_data:
@@ -188,6 +196,10 @@ class LeadAutomation:
             return token_data
         else:
             print("❌ Failed to obtain valid access token")
+            print("💡 This usually means:")
+            print("   1. ZOHO_REFRESH_TOKEN is invalid or expired")
+            print("   2. ZOHO_CLIENT_ID or ZOHO_CLIENT_SECRET is wrong")
+            print("   3. Your Zoho OAuth app needs to be re-authorized")
             return None
 
     def fetch_zoho_leads(self, access_token, api_domain):
