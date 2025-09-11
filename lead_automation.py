@@ -565,12 +565,23 @@ class LeadAutomation:
             return
         
         try:
-            # Read existing CSV
-            df = pd.read_csv(LEADS_CSV_FILE)
+            # Read existing CSV with error handling for malformed lines
+            try:
+                df = pd.read_csv(LEADS_CSV_FILE, on_bad_lines='skip')
+                print(f"✅ Read CSV with {len(df)} valid rows")
+            except pd.errors.ParserError as e:
+                print(f"⚠️ CSV parsing error: {e}")
+                print("🔧 Attempting to fix CSV structure...")
+                
+                # Try to read and fix the CSV manually
+                self.fix_csv_structure()
+                df = pd.read_csv(LEADS_CSV_FILE, on_bad_lines='skip')
+                print(f"✅ Fixed and read CSV with {len(df)} valid rows")
             
             # Add message_sent column if it doesn't exist
             if 'message_sent' not in df.columns:
                 df['message_sent'] = 'No'
+                print("✅ Added missing 'message_sent' column")
             
             # Update message status for each lead
             for lead in leads_with_status:
@@ -586,6 +597,87 @@ class LeadAutomation:
             
         except Exception as e:
             print(f"❌ Error updating message status in CSV: {e}")
+            print("🔧 Attempting to recover by fixing CSV structure...")
+            try:
+                self.fix_csv_structure()
+                print("✅ CSV structure fixed, please retry the operation")
+            except Exception as fix_error:
+                print(f"❌ Failed to fix CSV structure: {str(fix_error)}")
+
+    def fix_csv_structure(self):
+        """Fixes CSV structure by removing malformed lines and ensuring proper format."""
+        print("🔧 Fixing CSV structure...")
+        
+        try:
+            # Read file line by line and fix issues
+            with open(LEADS_CSV_FILE, 'r', encoding='utf-8') as f:
+                lines = f.readlines()
+            
+            if not lines:
+                print("❌ CSV file is empty")
+                return
+            
+            # Check header and expected columns
+            header = lines[0].strip()
+            expected_columns = len(self.leads_csv_headers)
+            
+            # If header doesn't have message_sent, add it
+            if 'message_sent' not in header:
+                header += ',message_sent'
+                expected_columns += 1
+            
+            fixed_lines = [header + '\n']  # Start with header
+            skipped_lines = []
+            
+            for i, line in enumerate(lines[1:], start=2):  # Skip header
+                line = line.strip()
+                if not line:
+                    continue
+                
+                # Count commas (fields = commas + 1)
+                field_count = line.count(',') + 1
+                
+                if field_count == expected_columns:
+                    fixed_lines.append(line + '\n')
+                elif field_count == expected_columns - 1:
+                    # Missing message_sent column, add it
+                    line += ',No'
+                    fixed_lines.append(line + '\n')
+                else:
+                    # Try to fix lines with too many commas (likely in data fields)
+                    fields = line.split(',')
+                    if len(fields) > expected_columns:
+                        # Combine extra fields into the email field (most likely culprit)
+                        fixed_fields = fields[:3]  # id, first_name, last_name
+                        if len(fields) > 3:
+                            # Combine email field parts that might have commas
+                            email_parts = fields[3:4 + (len(fields) - expected_columns)]
+                            fixed_fields.append(''.join(email_parts).replace(',', ''))
+                            # Add remaining fields
+                            fixed_fields.extend(fields[4 + (len(fields) - expected_columns):])
+                        
+                        # Ensure we have the right number of fields
+                        while len(fixed_fields) < expected_columns:
+                            fixed_fields.append('No')
+                        
+                        fixed_line = ','.join(fixed_fields[:expected_columns])
+                        fixed_lines.append(fixed_line + '\n')
+                        print(f"✅ Fixed line {i} with {len(fields)} fields")
+                    else:
+                        skipped_lines.append(f"Line {i}: {field_count} fields (expected {expected_columns})")
+                        print(f"⚠️ Skipping malformed line {i}: {field_count} fields")
+            
+            # Write fixed CSV
+            with open(LEADS_CSV_FILE, 'w', encoding='utf-8') as f:
+                f.writelines(fixed_lines)
+            
+            print(f"✅ Fixed CSV: kept {len(fixed_lines)-1} valid rows")
+            if skipped_lines:
+                print(f"⚠️ Skipped {len(skipped_lines)} malformed lines")
+                
+        except Exception as e:
+            print(f"❌ Error fixing CSV structure: {str(e)}")
+            raise
 
     def run_automation(self):
         """Main automation function - simple flow for testing."""
@@ -689,5 +781,30 @@ class LeadAutomation:
         print("=" * 50)
 
 if __name__ == "__main__":
+    # Quick fix for current CSV structure issue
     automation = LeadAutomation()
+    
+    # Check if CSV needs fixing
+    if os.path.exists(LEADS_CSV_FILE):
+        try:
+            # Try to read the CSV to see if it has issues
+            df = pd.read_csv(LEADS_CSV_FILE)
+            print(f"✅ CSV is readable with {len(df)} rows and {len(df.columns)} columns")
+            
+            # Check if message_sent column exists
+            if 'message_sent' not in df.columns:
+                print("🔧 Adding missing 'message_sent' column...")
+                df['message_sent'] = 'No'
+                df.to_csv(LEADS_CSV_FILE, index=False)
+                print("✅ Added 'message_sent' column to CSV")
+                
+        except Exception as e:
+            print(f"⚠️ CSV has issues: {e}")
+            print("🔧 Fixing CSV structure...")
+            try:
+                automation.fix_csv_structure()
+                print("✅ CSV structure fixed!")
+            except Exception as fix_error:
+                print(f"❌ Failed to fix CSV: {fix_error}")
+    
     automation.run_automation()
