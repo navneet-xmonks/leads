@@ -307,10 +307,19 @@ class LeadAutomation:
         
         # Add +91 for Indian numbers if not present
         if len(phone) == 10:
+            # 10 digits: assume Indian mobile number
+            phone = f"+91{phone}"
+        elif len(phone) == 11 and phone.startswith('9'):
+            # 11 digits starting with 9: likely missing the '1' in '91'
             phone = f"+91{phone}"
         elif len(phone) == 12 and phone.startswith('91'):
+            # 12 digits starting with 91: add + prefix
+            phone = f"+{phone}"
+        elif len(phone) == 13 and phone.startswith('91'):
+            # 13 digits starting with 91: add + prefix (already has country code)
             phone = f"+{phone}"
         elif not phone.startswith('+'):
+            # For any other case, add + prefix
             phone = f"+{phone}"
             
         return phone
