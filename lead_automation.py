@@ -627,7 +627,11 @@ class LeadAutomation:
             print("📝 First run completed. Next run will check for new leads and send messages.")
         
         # Save last run time for tracking
-        self.save_last_run_time()
+        try:
+            self.save_last_run_time()
+            print("✅ Last run time saved")
+        except Exception as e:
+            print(f"⚠️ Warning: Could not save last run time: {e}")
         
         print("\n🎉 Automation process completed!")
         print("=" * 50)

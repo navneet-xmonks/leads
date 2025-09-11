@@ -19,10 +19,13 @@ on:
 jobs:
   lead-automation:
     runs-on: ubuntu-latest
+    timeout-minutes: 15  # Fail fast if something goes wrong
     
     steps:
     - name: Checkout repository
       uses: actions/checkout@v4
+      with:
+        fetch-depth: 1  # Shallow clone for speed
       
     - name: Download previous CSV data
       uses: actions/download-artifact@v4
@@ -31,24 +34,31 @@ jobs:
         merge-multiple: true
         path: ./
       continue-on-error: true
+      timeout-minutes: 2  # Don't wait too long for artifacts
       
     - name: Set up Python 3.10
       uses: actions/setup-python@v5
       with:
         python-version: '3.10'
+        cache: 'pip'  # Built-in pip caching
+        cache-dependency-path: 'requirements.txt'
         
     - name: Cache pip dependencies
       uses: actions/cache@v4
       with:
-        path: ~/.cache/pip
-        key: ${{ runner.os }}-pip-${{ hashFiles('**/requirements.txt') }}
+        path: |
+          ~/.cache/pip
+          ~/.local/lib/python3.10/site-packages
+        key: ${{ runner.os }}-python-3.10-pip-${{ hashFiles('**/requirements.txt') }}
         restore-keys: |
+          ${{ runner.os }}-python-3.10-pip-
+          ${{ runner.os }}-python-3.10-
           ${{ runner.os }}-pip-
           
     - name: Install dependencies
       run: |
-        python -m pip install --upgrade pip
-        pip install -r requirements.txt
+        python -m pip install --upgrade pip --cache-dir ~/.cache/pip
+        pip install --no-deps --cache-dir ~/.cache/pip -r requirements.txt || pip install --cache-dir ~/.cache/pip -r requirements.txt
         
     - name: Create necessary directories
       run: |
@@ -73,9 +83,30 @@ jobs:
       run: |
         git config --local user.email "action@github.com"
         git config --local user.name "GitHub Action"
-        git add erickson_leads.csv last_run.json zoho_tokens.json
-        git diff --staged --quiet || git commit -m "Update lead data - $(date)"
-        git push
+        
+        echo "📁 Files in directory:"
+        ls -la
+        
+        echo "📊 Git status before adding:"
+        git status
+        
+        # Only add files that exist
+        [ -f "erickson_leads.csv" ] && git add erickson_leads.csv && echo "✅ Added erickson_leads.csv"
+        [ -f "last_run.json" ] && git add last_run.json && echo "✅ Added last_run.json"
+        [ -f "zoho_tokens.json" ] && git add zoho_tokens.json && echo "✅ Added zoho_tokens.json"
+        
+        echo "📊 Git status after adding:"
+        git status
+        
+        # Only commit if there are changes
+        if ! git diff --staged --quiet; then
+          echo "📝 Changes detected, committing..."
+          git commit -m "Update lead data - $(date)"
+          git push
+          echo "✅ Changes pushed successfully"
+        else
+          echo "📝 No changes to commit"
+        fi
       continue-on-error: true
         
     - name: Upload CSV artifact
