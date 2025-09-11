@@ -25,6 +25,7 @@ jobs:
     - name: Checkout repository
       uses: actions/checkout@v4
       with:
+        token: ${{ secrets.GITHUB_TOKEN_WORKFLOW }}
         fetch-depth: 1  # Shallow clone for speed
       
     - name: Download previous CSV data
@@ -98,7 +99,7 @@ jobs:
         if ! git diff --staged --quiet; then
           echo "📝 Changes detected, committing..."
           git commit -m "Update lead data - $(date)"
-          git push
+          git push https://${{ secrets.GITHUB_TOKEN_WORKFLOW }}@github.com/navneet-xmonks/leads.git main
           echo "✅ Changes pushed successfully"
         else
           echo "📝 No changes to commit"
