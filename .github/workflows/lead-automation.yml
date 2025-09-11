@@ -1,9 +1,9 @@
 name: Lead Automation
 
 on:
-  # Run on schedule (every 6 hours)
+  # Run on schedule (every hour)
   schedule:
-    - cron: '0 */6 * * *'  # Every 6 hours
+    - cron: '0 * * * *'  # Every hour
   
   # Allow manual trigger
   workflow_dispatch:

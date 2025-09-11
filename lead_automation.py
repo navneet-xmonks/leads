@@ -175,8 +175,9 @@ class LeadAutomation:
             return None
 
     def fetch_zoho_leads(self, access_token, api_domain):
-        """Fetches leads from Zoho CRM with phone numbers - filtered by Lead Source = 'test'."""
-        print("📞 Fetching leads from Zoho CRM (Lead Source: test only)...")
+        """Fetches leads from Zoho CRM with phone numbers - filtered by specific Lead Sources."""
+        target_sources = ["Google Landing Page", "Form Submission", "Whatsapp Marketing"]
+        print(f"📞 Fetching leads from Zoho CRM (Lead Sources: {', '.join(target_sources)})...")
 
         headers = {
             'Authorization': f'Zoho-oauthtoken {access_token}'
@@ -187,7 +188,7 @@ class LeadAutomation:
         
         # Try different formats for Zoho criteria
         # Method 1: Simple format without URL encoding
-        url = f"{api_domain}/crm/v8/Leads?fields={fields}&criteria=Lead_Source:equals:test&per_page=200"
+        url = f"{api_domain}/crm/v8/Leads?fields={fields}&criteria=Lead_Source:equals:Google Landing Page&per_page=200"
 
         try:
             print(f"🔍 API URL: {url}")
@@ -199,9 +200,9 @@ class LeadAutomation:
             
             # If no leads found with simple criteria, try alternative format
             if not leads:
-                print("� Trying alternative criteria format...")
-                # Method 2: Parentheses format
-                url2 = f"{api_domain}/crm/v8/Leads?fields={fields}&criteria=(Lead_Source:equals:test)&per_page=200"
+                print("🔄 Trying alternative criteria format...")
+                # Method 2: Try fetching all and filter manually
+                url2 = f"{api_domain}/crm/v8/Leads?fields={fields}&per_page=200"
                 response2 = requests.get(url2, headers=headers)
                 response2.raise_for_status()
                 leads_data2 = response2.json()
@@ -212,7 +213,7 @@ class LeadAutomation:
                 print("🔄 Trying COQL search API...")
                 search_url = f"{api_domain}/crm/v8/coql"
                 coql_query = {
-                    "select_query": f"select {fields} from Leads where Lead_Source = 'test' limit 200"
+                    "select_query": f"select {fields} from Leads where Lead_Source in ('Google Landing Page', 'Form Submission', 'Whatsapp Marketing') limit 200"
                 }
                 search_response = requests.post(search_url, headers=headers, json=coql_query)
                 if search_response.status_code == 200:
@@ -227,20 +228,20 @@ class LeadAutomation:
                     first_name = lead.get('First_Name', 'No Name')
                     print(f"  Lead {i+1}: {first_name} - Lead_Source = '{lead_source}'")
             
-            # Apply manual filter to ensure only test leads (since API filtering seems inconsistent)
+            # Apply manual filter to ensure only target leads (since API filtering seems inconsistent)
             if leads:
-                test_leads = []
+                target_leads = []
                 for lead in leads:
                     lead_source = lead.get('Lead_Source', '')
                     if lead_source is None:
                         lead_source = ''
-                    if lead_source.lower() == 'test':
-                        test_leads.append(lead)
+                    if lead_source in target_sources:
+                        target_leads.append(lead)
                 
-                print(f"🔍 Manual filtering: {len(test_leads)} actual test leads out of {len(leads)} fetched")
-                leads = test_leads
+                print(f"🔍 Manual filtering: {len(target_leads)} target leads out of {len(leads)} fetched")
+                leads = target_leads
             
-            print(f"✅ Final result: {len(leads)} leads with Lead_Source='test'")
+            print(f"✅ Final result: {len(leads)} leads with Lead_Source in {target_sources}")
             return leads
 
         except requests.exceptions.RequestException as e:
@@ -275,15 +276,16 @@ class LeadAutomation:
         file_exists = os.path.exists(LEADS_CSV_FILE)
         
         processed_leads = []
+        target_sources = ["Google Landing Page", "Form Submission", "Whatsapp Marketing"]
+        
         for lead in leads:
-            # FILTER: Only save leads with Lead_Source = 'test'
+            # FILTER: Only save leads with target Lead Sources
             lead_source = lead.get('Lead_Source', '')
             if lead_source is None:
                 lead_source = ''
-            lead_source = lead_source.lower()
             
-            if lead_source != 'test':
-                print(f"⚠️ Skipping lead {lead.get('First_Name', 'Unknown')} - Lead_Source is '{lead.get('Lead_Source', 'None')}', not 'test'")
+            if lead_source not in target_sources:
+                print(f"⚠️ Skipping lead {lead.get('First_Name', 'Unknown')} - Lead_Source is '{lead.get('Lead_Source', 'None')}', not in target sources")
                 continue
                 
             # Get phone number (prefer Mobile over Phone)
@@ -472,15 +474,16 @@ class LeadAutomation:
             # Save only new leads to CSV
             if new_leads:
                 processed_new_leads = []
+                target_sources = ["Google Landing Page", "Form Submission", "Whatsapp Marketing"]
+                
                 for lead in new_leads:
-                    # FILTER: Only save leads with Lead_Source = 'test'
+                    # FILTER: Only save leads with target Lead Sources
                     lead_source = lead.get('Lead_Source', '')
                     if lead_source is None:
                         lead_source = ''
-                    lead_source = lead_source.lower()
                     
-                    if lead_source != 'test':
-                        print(f"⚠️ Skipping new lead {lead.get('First_Name', 'Unknown')} - Lead_Source is '{lead.get('Lead_Source', 'None')}', not 'test'")
+                    if lead_source not in target_sources:
+                        print(f"⚠️ Skipping new lead {lead.get('First_Name', 'Unknown')} - Lead_Source is '{lead.get('Lead_Source', 'None')}', not in target sources")
                         continue
                         
                     phone = lead.get('Mobile') or lead.get('Phone')
