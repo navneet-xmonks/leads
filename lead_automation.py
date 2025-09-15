@@ -20,7 +20,7 @@ MAX_DETAILED_LOGS = int(os.getenv('MAX_DETAILED_LOGS', '5'))  # Max detailed log
 
 # AiSensy Configuration
 AISENSY_API_KEY = os.getenv('AISENSY_API_KEY')
-CAMPAIGN_NAME = "welcome_test"
+CAMPAIGN_NAME = "Welcome_Erickson"
 WELCOME_IMAGE_URL = "https://xmonks.com/5eb66e6a-4335-4b78-8279-7c9298332add.jpg"
 IMAGE_FILENAME = "5eb66e6a-4335-4b78-8279-7c9298332add.jpg"
 
