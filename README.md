@@ -30,6 +30,12 @@ Add these **Repository Secrets**:
 
 #### AiSensy API Credentials:
 - `AISENSY_API_KEY`: Your AiSensy API key for WhatsApp messaging
+- `AISENSY_CAMPAIGN_T1`: Template 1 campaign name (default: `Welcome_Erickson`)
+- `AISENSY_CAMPAIGN_T2`: Template 2 campaign name
+- `AISENSY_CAMPAIGN_T3`: Template 3 campaign name
+- `AISENSY_CAMPAIGN_T4`: Template 4 campaign name
+- `AISENSY_CAMPAIGN_T5`: Template 5 campaign name
+- `WHATSAPP_DRIP_CAMPAIGN`: Drip campaign label (default: `Erickson_WhatsApp_Drip`)
 
 ### Step 3: Get Zoho OAuth Tokens (One-time Setup)
 
@@ -81,6 +87,29 @@ schedule:
 ### Lead Filtering
 The automation only processes leads with `Lead_Source = "test"`. To change this, modify the filtering logic in `lead_automation.py`.
 
+### Local Scheduler (optional)
+Use the local scheduler for testing before GitHub Actions:
+```bash
+python3 scheduler_local.py
+```
+This runs immediately and then every 2 minutes.
+
+### Drip Campaign Schedule
+Templates are sent on offsets from the time Template 1 succeeds:
+- Template 1: immediately for new leads
+- Template 2: +1 day
+- Template 3: +4 days
+- Template 4: +5 days
+- Template 5: +7 days
+
+The drip queue is stored in `whatsapp_drip.json`. Completed entries are removed after Template 5 succeeds.
+
+For local testing you can switch to minute-based offsets by setting:
+```
+DRIP_SCHEDULE_UNIT=minutes
+```
+This uses offsets of 1, 2, 3, and 5 minutes for Templates 2-5.
+
 ## 📊 Monitoring & Troubleshooting
 
 ### Check Run Status
@@ -106,6 +135,7 @@ The automation only processes leads with `Lead_Source = "test"`. To change this,
 │   └── lead-automation.yml    # GitHub Actions workflow
 ├── lead_automation.py         # Main automation script
 ├── requirements.txt           # Python dependencies
+├── whatsapp_drip.json          # Drip queue (created at runtime)
 └── README.md                 # This file
 ```
 

@@ -4,7 +4,12 @@ import json
 import os
 import time
 from datetime import datetime, timedelta
+from urllib.parse import unquote, urlparse
+
+from dotenv import load_dotenv
 import pandas as pd
+
+load_dotenv()
 
 # --- Configuration ---
 CLIENT_ID = os.getenv('ZOHO_CLIENT_ID')
@@ -20,9 +25,27 @@ MAX_DETAILED_LOGS = int(os.getenv('MAX_DETAILED_LOGS', '5'))  # Max detailed log
 
 # AiSensy Configuration
 AISENSY_API_KEY = os.getenv('AISENSY_API_KEY')
-CAMPAIGN_NAME = "Welcome_Erickson"
-WELCOME_IMAGE_URL = "https://xmonks.com/5eb66e6a-4335-4b78-8279-7c9298332add.jpg"
-IMAGE_FILENAME = "5eb66e6a-4335-4b78-8279-7c9298332add.jpg"
+
+# WhatsApp drip tracking
+WHATSAPP_DRIP_FILE = "whatsapp_drip.json"
+DRIP_CAMPAIGN_NAME = os.getenv("WHATSAPP_DRIP_CAMPAIGN", "Erickson_WhatsApp_Drip")
+DRIP_SCHEDULE_UNIT = os.getenv("DRIP_SCHEDULE_UNIT", "days").strip().lower()
+TEMPLATE_CAMPAIGNS = {
+    1: os.getenv("AISENSY_CAMPAIGN_T1", "Welcome_Erickson"),
+    2: os.getenv("AISENSY_CAMPAIGN_T2", "Template_2"),
+    3: os.getenv("AISENSY_CAMPAIGN_T3", "Template_3"),
+    4: os.getenv("AISENSY_CAMPAIGN_T4", "Template_4"),
+    5: os.getenv("AISENSY_CAMPAIGN_T5", "Template_5"),
+}
+TEMPLATE_MEDIA_URLS = {
+    1: "https://www.erickson.co.in/wp-content/uploads/2026/01/Gemini_Generated_Image_2gc1ir2gc1ir2gc1-1-1.png",
+    2: "https://xmonks.com/Gemini_Generated_Image_cl9aeicl9aeicl9a%20%281%29.png",
+    3: "https://xmonks.com/Gemini_Generated_Image_j1tessj1tessj1te%20%281%29.png",
+    4: "https://www.xmonks.com/Gemini_Generated_Image_f8q9dsf8q9dsf8q9%20%281%29.png",
+    5: "https://xmonks.com/Gemini_Generated_Image_4o47sw4o47sw4o47%20%281%29.png",
+}
+DRIP_SCHEDULE_DAYS = {1: 0, 2: 1, 3: 4, 4: 5, 5: 7}
+DRIP_SCHEDULE_MINUTES = {1: 0, 2: 1, 3: 2, 4: 3, 5: 5}
 
 class LeadAutomation:
     def __init__(self):
@@ -31,6 +54,208 @@ class LeadAutomation:
             'lead_source', 'referral_code', 'referral_status', 'record_status', 
             'created_time', 'modified_time', 'fetched_at', 'message_sent'
         ]
+
+    def get_template_campaign(self, step):
+        """Get the AiSensy campaign name for a drip step."""
+        return TEMPLATE_CAMPAIGNS.get(step, "")
+
+    def get_template_media(self, step):
+        """Get the media URL and filename for a drip step."""
+        media_url = TEMPLATE_MEDIA_URLS.get(step, "")
+        if not media_url:
+            return "", ""
+
+        parsed = urlparse(media_url)
+        filename = unquote(os.path.basename(parsed.path))
+        return media_url, filename
+
+    def is_message_success(self, response):
+        """Determines if a WhatsApp message send was successful."""
+        return (
+            response.get('success') == 'true'
+            or response.get('status') == 'success'
+            or response.get('status_code') == 200
+        )
+
+    def build_processed_lead(self, lead, fetched_at, message_sent_value, phone=None):
+        """Builds a CSV-ready lead row from Zoho lead data."""
+        if phone is None:
+            phone = lead.get('Mobile') or lead.get('Phone')
+            phone = self.normalize_phone_number(phone)
+
+        return {
+            'id': lead.get('id'),
+            'first_name': lead.get('First_Name', ''),
+            'last_name': lead.get('Last_Name', ''),
+            'email': lead.get('Email', ''),
+            'phone': phone,
+            'lead_source': lead.get('Lead_Source', ''),
+            'referral_code': lead.get('Referral_Code', ''),
+            'referral_status': lead.get('Referral_Status', ''),
+            'record_status': lead.get('Record_Status__s', ''),
+            'created_time': lead.get('Created_Time', ''),
+            'modified_time': lead.get('Modified_Time', ''),
+            'fetched_at': fetched_at,
+            'message_sent': message_sent_value
+        }
+
+    def append_processed_leads(self, processed_leads):
+        """Append processed leads to the CSV with headers if needed."""
+        if not processed_leads:
+            return
+
+        file_exists = os.path.exists(LEADS_CSV_FILE)
+        with open(LEADS_CSV_FILE, 'a', newline='', encoding='utf-8') as csvfile:
+            writer = csv.DictWriter(csvfile, fieldnames=self.leads_csv_headers)
+            if not file_exists:
+                writer.writeheader()
+            writer.writerows(processed_leads)
+
+        print(f"✅ {len(processed_leads)} leads saved to {LEADS_CSV_FILE}")
+
+    def load_drip_entries(self):
+        """Load the WhatsApp drip tracking entries from JSON."""
+        if not os.path.exists(WHATSAPP_DRIP_FILE):
+            return []
+
+        try:
+            with open(WHATSAPP_DRIP_FILE, 'r', encoding='utf-8') as f:
+                data = json.load(f)
+                return data if isinstance(data, list) else []
+        except Exception as e:
+            print(f"⚠️ Error loading drip file: {e}")
+            return []
+
+    def save_drip_entries(self, entries):
+        """Save WhatsApp drip tracking entries to JSON."""
+        try:
+            with open(WHATSAPP_DRIP_FILE, 'w', encoding='utf-8') as f:
+                json.dump(entries, f, indent=2)
+        except Exception as e:
+            print(f"❌ Error saving drip file: {e}")
+
+    def calculate_next_send_at(self, t1_sent_at, step):
+        """Calculate next send time based on Template 1 send time."""
+        if isinstance(t1_sent_at, str):
+            try:
+                t1_sent_at = datetime.fromisoformat(t1_sent_at)
+            except Exception:
+                return None
+        schedule_unit = DRIP_SCHEDULE_UNIT or "days"
+
+        if schedule_unit == "minutes":
+            minutes_offset = DRIP_SCHEDULE_MINUTES.get(step)
+            if minutes_offset is None:
+                return None
+            return (t1_sent_at + timedelta(minutes=minutes_offset)).isoformat()
+
+        days_offset = DRIP_SCHEDULE_DAYS.get(step)
+        if days_offset is None:
+            return None
+        return (t1_sent_at + timedelta(days=days_offset)).isoformat()
+
+    def add_to_drip_queue(self, drip_entries):
+        """Add new entries to the drip queue, avoiding duplicates by phone."""
+        if not drip_entries:
+            return
+
+        existing_entries = self.load_drip_entries()
+        existing_by_phone = {entry.get('phone'): entry for entry in existing_entries}
+
+        added_count = 0
+        for entry in drip_entries:
+            phone = entry.get('phone')
+            if not phone or phone in existing_by_phone:
+                continue
+            existing_entries.append(entry)
+            existing_by_phone[phone] = entry
+            added_count += 1
+
+        if added_count:
+            self.save_drip_entries(existing_entries)
+            print(f"✅ Added {added_count} numbers to drip queue")
+
+    def process_drip_queue(self):
+        """Send due drip templates and update the queue."""
+        entries = self.load_drip_entries()
+        if not entries:
+            return
+
+        now = datetime.now()
+        updated_entries = []
+        completed_count = 0
+        sent_count = 0
+        due_count = 0
+
+        for entry in entries:
+            next_step = entry.get('next_step')
+            if next_step is None:
+                last_step = entry.get('last_step_sent', 1)
+                next_step = last_step + 1
+
+            if next_step > 5:
+                completed_count += 1
+                continue
+
+            next_send_at = entry.get('next_send_at')
+            if not next_send_at:
+                next_send_at = self.calculate_next_send_at(entry.get('t1_sent_at'), next_step)
+                entry['next_send_at'] = next_send_at
+
+            try:
+                next_send_dt = datetime.fromisoformat(next_send_at) if next_send_at else None
+            except Exception:
+                next_send_dt = None
+
+            if next_send_dt and next_send_dt <= now:
+                due_count += 1
+                campaign_name = self.get_template_campaign(next_step)
+                media_url, media_filename = self.get_template_media(next_step)
+                phone = entry.get('phone')
+                first_name = entry.get('first_name', 'Friend')
+                user_name = f"{first_name} {entry.get('last_name', '')}".strip()
+
+                if not phone or not campaign_name or not media_url:
+                    updated_entries.append(entry)
+                    continue
+
+                response = self.send_aisensy_message(
+                    phone=phone,
+                    user_name=user_name,
+                    campaign_name=campaign_name,
+                    media_url=media_url,
+                    media_filename=media_filename,
+                    template_params=[first_name]
+                )
+
+                if self.is_message_success(response):
+                    sent_count += 1
+                    entry['last_step_sent'] = next_step
+                    entry['last_sent_at'] = now.isoformat()
+                    entry['last_campaign'] = campaign_name
+
+                    if next_step >= 5:
+                        completed_count += 1
+                        continue
+
+                    next_step = next_step + 1
+                    entry['next_step'] = next_step
+                    entry['next_send_at'] = self.calculate_next_send_at(entry.get('t1_sent_at'), next_step)
+                    entry['next_campaign'] = self.get_template_campaign(next_step)
+                else:
+                    # Keep entry unchanged to retry on next run
+                    pass
+
+            updated_entries.append(entry)
+
+        if sent_count or completed_count or len(updated_entries) != len(entries):
+            self.save_drip_entries(updated_entries)
+            if sent_count:
+                print(f"✅ Drip messages sent: {sent_count}")
+            if due_count and sent_count < due_count:
+                print(f"⚠️ Drip messages failed: {due_count - sent_count}")
+            if completed_count:
+                print(f"✅ Drip entries completed: {completed_count}")
     
     def is_first_run(self):
         """Check if this is the first time running the automation."""
@@ -223,7 +448,7 @@ class LeadAutomation:
 
     def fetch_zoho_leads(self, access_token, api_domain):
         """Fetches leads from Zoho CRM with phone numbers - filtered by specific Lead Sources."""
-        target_sources = ["Google Landing Page", "Form Submission", "Whatsapp Marketing"]
+        target_sources = ["Google Landing Page", "Form Submission", "Youtube Ads"]
         print(f"📞 Fetching leads from Zoho CRM (Lead Sources: {', '.join(target_sources)})...")
 
         headers = {
@@ -260,7 +485,7 @@ class LeadAutomation:
                 print("🔄 Trying COQL search API...")
                 search_url = f"{api_domain}/crm/v8/coql"
                 coql_query = {
-                    "select_query": f"select {fields} from Leads where Lead_Source in ('Google Landing Page', 'Form Submission', 'Whatsapp Marketing') limit 200"
+                    "select_query": f"select {fields} from Leads where Lead_Source in ('Google Landing Page', 'Form Submission', 'Youtube Ads') limit 200"
                 }
                 search_response = requests.post(search_url, headers=headers, json=coql_query)
                 if search_response.status_code == 200:
@@ -324,58 +549,31 @@ class LeadAutomation:
             
         return phone
 
-    def save_leads_to_csv(self, leads):
+    def save_leads_to_csv(self, leads, message_sent_value='No'):
         """Saves leads to CSV file with timestamp - ONLY test leads."""
         current_time = datetime.now().isoformat()
-        
-        # Check if CSV exists to determine if we need headers
-        file_exists = os.path.exists(LEADS_CSV_FILE)
-        
         processed_leads = []
-        target_sources = ["Google Landing Page", "Form Submission", "Whatsapp Marketing"]
-        
+        target_sources = ["Google Landing Page", "Form Submission", "Youtube Ads"]
+
         for lead in leads:
             # FILTER: Only save leads with target Lead Sources
             lead_source = lead.get('Lead_Source', '')
             if lead_source is None:
                 lead_source = ''
-            
+
             if lead_source not in target_sources:
                 print(f"⚠️ Skipping lead {lead.get('First_Name', 'Unknown')} - Lead_Source is '{lead.get('Lead_Source', 'None')}', not in target sources")
                 continue
-                
-            # Get phone number (prefer Mobile over Phone)
-            phone = lead.get('Mobile') or lead.get('Phone')
-            phone = self.normalize_phone_number(phone)
-            
-            processed_lead = {
-                'id': lead.get('id'),
-                'first_name': lead.get('First_Name', ''),
-                'last_name': lead.get('Last_Name', ''),
-                'email': lead.get('Email', ''),
-                'phone': phone,
-                'lead_source': lead.get('Lead_Source', ''),
-                'referral_code': lead.get('Referral_Code', ''),
-                'referral_status': lead.get('Referral_Status', ''),
-                'record_status': lead.get('Record_Status__s', ''),
-                'created_time': lead.get('Created_Time', ''),
-                'modified_time': lead.get('Modified_Time', ''),
-                'fetched_at': current_time,
-                'message_sent': 'No'  # First run, no messages sent yet
-            }
-            processed_leads.append(processed_lead)
-        
-        # Write to CSV (append mode for new leads)
-        with open(LEADS_CSV_FILE, 'a', newline='', encoding='utf-8') as csvfile:
-            writer = csv.DictWriter(csvfile, fieldnames=self.leads_csv_headers)
-            
-            # Write headers if file doesn't exist
-            if not file_exists:
-                writer.writeheader()
-                
-            writer.writerows(processed_leads)
-        
-        print(f"✅ {len(processed_leads)} leads saved to {LEADS_CSV_FILE}")
+
+            processed_leads.append(
+                self.build_processed_lead(
+                    lead,
+                    fetched_at=current_time,
+                    message_sent_value=message_sent_value
+                )
+            )
+
+        self.append_processed_leads(processed_leads)
         return processed_leads
 
     def get_existing_lead_ids(self):
@@ -442,19 +640,19 @@ class LeadAutomation:
             
         return new_leads
 
-    def send_aisensy_message(self, phone, user_name, template_params=None):
+    def send_aisensy_message(self, phone, user_name, campaign_name, media_url, media_filename, template_params=None):
         """Sends a WhatsApp message via AiSensy API."""
         url = "https://backend.aisensy.com/campaign/t1/api/v2"
 
         payload = {
             "apiKey": AISENSY_API_KEY,
-            "campaignName": CAMPAIGN_NAME,
+            "campaignName": campaign_name,
             "destination": phone,
             "userName": user_name,
             "source": "Zoho CRM Automation",
             "media": {
-                "url": WELCOME_IMAGE_URL,
-                "filename": IMAGE_FILENAME
+                "url": media_url,
+                "filename": media_filename
             },
             "templateParams": template_params or []
         }
@@ -464,109 +662,112 @@ class LeadAutomation:
         try:
             response = requests.post(url, json=payload, headers=headers)
             return response.json()
-        except:
-            return {"status_code": response.status_code, "text": response.text}
+        except Exception as e:
+            return {"status_code": 0, "error": str(e)}
 
     def send_welcome_messages_to_new_leads(self, new_leads):
-        """Sends welcome WhatsApp messages to new leads and updates CSV with message status."""
+        """Sends Template 1 to new leads, saves successes, and queues drip sends."""
         if not new_leads:
             print("📱 No new leads to send messages to.")
             return
-        
-        # Read existing CSV to check for leads that already have messages sent
-        existing_leads_with_messages = set()
-        if os.path.exists(LEADS_CSV_FILE):
-            try:
-                df = pd.read_csv(LEADS_CSV_FILE)
-                # Get IDs of leads that already have messages sent
-                sent_df = df[df.get('message_sent', 'No') == 'Yes']
-                existing_leads_with_messages = set(sent_df['id'].astype(str).tolist())
-            except Exception as e:
-                print(f"⚠️ Error reading message status: {e}")
-        
+
         successful_sends = 0
         failed_sends = 0
-        skipped_sends = 0
         no_phone_skips = 0
-        
-        print(f"📱 Processing {len(new_leads)} leads for messaging...")
-        
+        skipped_sends = 0
+
+        processed_leads = []
+        drip_entries = []
+        target_sources = ["Google Landing Page", "Form Submission", "Youtube Ads"]
+        campaign_name = self.get_template_campaign(1)
+        media_url, media_filename = self.get_template_media(1)
+
+        if not campaign_name or not media_url:
+            print("❌ Missing campaign name for Template 1")
+            return
+
+        print(f"📱 Processing {len(new_leads)} leads for Template 1...")
+
         for i, lead in enumerate(new_leads, 1):
-            lead_id = str(lead.get('id', ''))
-            phone = lead.get('phone')
-            first_name = lead.get('first_name', 'Friend')
-            
-            # Skip if message already sent to this lead
-            if lead_id in existing_leads_with_messages:
+            lead_source = lead.get('Lead_Source', '')
+            if lead_source is None:
+                lead_source = ''
+
+            if lead_source not in target_sources:
                 skipped_sends += 1
-                # Only log first few skips to avoid spam
-                if skipped_sends <= 3:
-                    print(f"⏭️ Skipping {first_name} - message already sent")
-                elif skipped_sends == 4:
-                    print(f"⏭️ ... and {len(new_leads) - i + 1} more leads already processed (suppressing further skip logs)")
                 continue
-            
+
+            phone = lead.get('Mobile') or lead.get('Phone')
+            phone = self.normalize_phone_number(phone)
+            first_name = lead.get('First_Name', 'Friend')
+
             if not phone:
                 no_phone_skips += 1
-                # Only log first few no-phone skips
                 if no_phone_skips <= 3:
                     print(f"⚠️ Skipping {first_name} - no phone number")
                 elif no_phone_skips == 4:
-                    print(f"⚠️ ... and more leads without phone numbers (suppressing further logs)")
+                    print("⚠️ ... more leads without phone numbers (suppressing further logs)")
                 continue
-            
-            print(f"📱 [{i}/{len(new_leads)}] Sending welcome message to {first_name} ({phone})")
-            
-            # Send message with first name as template parameter
+
+            print(f"📱 [{i}/{len(new_leads)}] Sending Template 1 to {first_name} ({phone})")
+
             response = self.send_aisensy_message(
                 phone=phone,
-                user_name=f"{first_name} {lead.get('last_name', '')}".strip(),
+                user_name=f"{first_name} {lead.get('Last_Name', '')}".strip(),
+                campaign_name=campaign_name,
+                media_url=media_url,
+                media_filename=media_filename,
                 template_params=[first_name]
             )
-            
-            # Check for success - AiSensy returns 'success': 'true' as string
-            message_sent_status = 'No'
-            if (response.get('success') == 'true' or 
-                response.get('status') == 'success' or 
-                response.get('status_code') == 200):
+
+            if self.is_message_success(response):
                 successful_sends += 1
-                message_sent_status = 'Yes'
-                print(f"✅ Message sent successfully to {first_name}")
+                sent_at = datetime.now().isoformat()
+                processed_leads.append(
+                    self.build_processed_lead(
+                        lead,
+                        fetched_at=sent_at,
+                        message_sent_value='Yes',
+                        phone=phone
+                    )
+                )
+
+                next_step = 2
+                drip_entries.append({
+                    'phone': phone,
+                    'lead_id': str(lead.get('id', '')),
+                    'first_name': lead.get('First_Name', ''),
+                    'last_name': lead.get('Last_Name', ''),
+                    'drip_campaign': DRIP_CAMPAIGN_NAME,
+                    't1_sent_at': sent_at,
+                    'last_step_sent': 1,
+                    'next_step': next_step,
+                    'next_send_at': self.calculate_next_send_at(sent_at, next_step),
+                    'next_campaign': self.get_template_campaign(next_step)
+                })
+                print(f"✅ Template 1 sent successfully to {first_name}")
             else:
                 failed_sends += 1
-                # Only log first few failures in detail to avoid spam
                 if failed_sends <= 5:
-                    print(f"❌ Failed to send message to {first_name}: {response}")
+                    print(f"❌ Failed to send Template 1 to {first_name}: {response}")
                 elif failed_sends == 6:
-                    print(f"❌ ... and more failures (suppressing detailed error logs)")
-                else:
-                    print(f"❌ Failed to send message to {first_name}")
-            
-            # Update the lead record with message status
-            lead['message_sent'] = message_sent_status
-            
-            # Add small delay to avoid rate limiting
+                    print("❌ ... more failures (suppressing detailed error logs)")
+
             time.sleep(2)
-            
-            # Progress update for large batches
+
             if i % 50 == 0:
                 print(f"📊 Progress: {i}/{len(new_leads)} leads processed...")
-        
-        # Update CSV with message status
-        self.update_message_status_in_csv(new_leads)
-        
-        print(f"\n📊 Final Message Summary:")
+
+        if processed_leads:
+            self.append_processed_leads(processed_leads)
+            self.add_to_drip_queue(drip_entries)
+
+        print("\n📊 Template 1 Summary:")
         print(f"✅ Successfully sent: {successful_sends}")
         print(f"❌ Failed to send: {failed_sends}")
-        print(f"⏭️ Skipped (already sent): {skipped_sends}")
         print(f"⚠️ Skipped (no phone): {no_phone_skips}")
+        print(f"⏭️ Skipped (filtered): {skipped_sends}")
         print(f"📱 Total processed: {len(new_leads)}")
-        
-        # Alert for large skip counts
-        if skipped_sends > 100:
-            print(f"⚠️ HIGH SKIP COUNT: {skipped_sends} leads already have messages sent")
-        if no_phone_skips > 50:
-            print(f"⚠️ HIGH NO-PHONE COUNT: {no_phone_skips} leads missing phone numbers")
     
     def update_message_status_in_csv(self, leads_with_status):
         """Update the CSV file with message sent status for the leads."""
@@ -678,56 +879,18 @@ class LeadAutomation:
         if not first_run:
             new_leads = self.find_new_leads(leads)
             
-            # Save only new leads to CSV
             if new_leads:
-                processed_new_leads = []
-                target_sources = ["Google Landing Page", "Form Submission", "Whatsapp Marketing"]
-                
-                for lead in new_leads:
-                    # FILTER: Only save leads with target Lead Sources
-                    lead_source = lead.get('Lead_Source', '')
-                    if lead_source is None:
-                        lead_source = ''
-                    
-                    if lead_source not in target_sources:
-                        print(f"⚠️ Skipping new lead {lead.get('First_Name', 'Unknown')} - Lead_Source is '{lead.get('Lead_Source', 'None')}', not in target sources")
-                        continue
-                        
-                    phone = lead.get('Mobile') or lead.get('Phone')
-                    phone = self.normalize_phone_number(phone)
-                    
-                    processed_lead = {
-                        'id': lead.get('id'),
-                        'first_name': lead.get('First_Name', ''),
-                        'last_name': lead.get('Last_Name', ''),
-                        'email': lead.get('Email', ''),
-                        'phone': phone,
-                        'lead_source': lead.get('Lead_Source', ''),
-                        'referral_code': lead.get('Referral_Code', ''),
-                        'referral_status': lead.get('Referral_Status', ''),
-                        'record_status': lead.get('Record_Status__s', ''),
-                        'created_time': lead.get('Created_Time', ''),
-                        'modified_time': lead.get('Modified_Time', ''),
-                        'fetched_at': datetime.now().isoformat(),
-                        'message_sent': 'No'  # Will be updated after sending message
-                    }
-                    processed_new_leads.append(processed_lead)
-                
-                # Save new leads to CSV
-                with open(LEADS_CSV_FILE, 'a', newline='', encoding='utf-8') as csvfile:
-                    writer = csv.DictWriter(csvfile, fieldnames=self.leads_csv_headers)
-                    writer.writerows(processed_new_leads)
-                
-                print(f"✅ {len(processed_new_leads)} new leads saved to CSV")
-                
-                # Send WhatsApp messages to new leads
-                self.send_welcome_messages_to_new_leads(processed_new_leads)
+                # Send Template 1 and only save leads after success
+                self.send_welcome_messages_to_new_leads(new_leads)
             else:
                 print("📱 No new leads found.")
         else:
             # First run - save all leads to CSV
             self.save_leads_to_csv(leads)
             print("📝 First run completed. Next run will check for new leads and send messages.")
+
+        # Process drip queue every run
+        self.process_drip_queue()
         
         # Save last run time for tracking
         try:
