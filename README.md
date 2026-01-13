@@ -98,9 +98,9 @@ This runs immediately and then every 2 minutes.
 Templates are sent on offsets from the time Template 1 succeeds:
 - Template 1: immediately for new leads
 - Template 2: +1 day
-- Template 3: +4 days
+- Template 3: +3 days
 - Template 4: +5 days
-- Template 5: +7 days
+- Template 5: +6 days
 
 The drip queue is stored in `whatsapp_drip.json`. Completed entries are removed after Template 5 succeeds.
 
@@ -108,7 +108,7 @@ For local testing you can switch to minute-based offsets by setting:
 ```
 DRIP_SCHEDULE_UNIT=minutes
 ```
-This uses offsets of 1, 2, 3, and 5 minutes for Templates 2-5.
+This uses offsets of 1, 3, 5, and 6 minutes for Templates 2-5.
 
 ## 📊 Monitoring & Troubleshooting
 

@@ -28,14 +28,14 @@ AISENSY_API_KEY = os.getenv('AISENSY_API_KEY')
 
 # WhatsApp drip tracking
 WHATSAPP_DRIP_FILE = "whatsapp_drip.json"
-DRIP_CAMPAIGN_NAME = os.getenv("WHATSAPP_DRIP_CAMPAIGN", "Erickson_WhatsApp_Drip")
+DRIP_CAMPAIGN_NAME = os.getenv("WHATSAPP_DRIP_CAMPAIGN") or "Erickson_WhatsApp_Drip"
 DRIP_SCHEDULE_UNIT = os.getenv("DRIP_SCHEDULE_UNIT", "days").strip().lower()
 TEMPLATE_CAMPAIGNS = {
-    1: os.getenv("AISENSY_CAMPAIGN_T1", "Welcome_Erickson"),
-    2: os.getenv("AISENSY_CAMPAIGN_T2", "Template_2"),
-    3: os.getenv("AISENSY_CAMPAIGN_T3", "Template_3"),
-    4: os.getenv("AISENSY_CAMPAIGN_T4", "Template_4"),
-    5: os.getenv("AISENSY_CAMPAIGN_T5", "Template_5"),
+    1: os.getenv("AISENSY_CAMPAIGN_T1") or "Welcome_Erickson",
+    2: os.getenv("AISENSY_CAMPAIGN_T2") or "Template_2",
+    3: os.getenv("AISENSY_CAMPAIGN_T3") or "Template_3",
+    4: os.getenv("AISENSY_CAMPAIGN_T4") or "Template_4",
+    5: os.getenv("AISENSY_CAMPAIGN_T5") or "Template_5",
 }
 TEMPLATE_MEDIA_URLS = {
     1: "https://www.erickson.co.in/wp-content/uploads/2026/01/Gemini_Generated_Image_2gc1ir2gc1ir2gc1-1-1.png",
@@ -44,8 +44,8 @@ TEMPLATE_MEDIA_URLS = {
     4: "https://www.xmonks.com/Gemini_Generated_Image_f8q9dsf8q9dsf8q9%20%281%29.png",
     5: "https://xmonks.com/Gemini_Generated_Image_4o47sw4o47sw4o47%20%281%29.png",
 }
-DRIP_SCHEDULE_DAYS = {1: 0, 2: 1, 3: 4, 4: 5, 5: 7}
-DRIP_SCHEDULE_MINUTES = {1: 0, 2: 1, 3: 2, 4: 3, 5: 5}
+DRIP_SCHEDULE_DAYS = {1: 0, 2: 1, 3: 3, 4: 5, 5: 6}
+DRIP_SCHEDULE_MINUTES = {1: 0, 2: 1, 3: 3, 4: 5, 5: 6}
 
 class LeadAutomation:
     def __init__(self):

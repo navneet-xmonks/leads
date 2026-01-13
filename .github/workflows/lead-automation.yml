@@ -1,9 +1,9 @@
 name: Lead Automation
 
 on:
-  # Run on schedule (every hour)
+  # Run on schedule (daily, 3:00 PM IST / 9:30 AM UTC)
   schedule:
-    - cron: '0 * * * *'  # Every hour
+    - cron: '30 9 * * *'  # Every day at 9:30 AM UTC
   
   # Allow manual trigger
   workflow_dispatch:
@@ -76,6 +76,13 @@ jobs:
         
         # AiSensy API credentials
         AISENSY_API_KEY: ${{ secrets.AISENSY_API_KEY }}
+        AISENSY_CAMPAIGN_T1: ${{ secrets.AISENSY_CAMPAIGN_T1 }}
+        AISENSY_CAMPAIGN_T2: ${{ secrets.AISENSY_CAMPAIGN_T2 }}
+        AISENSY_CAMPAIGN_T3: ${{ secrets.AISENSY_CAMPAIGN_T3 }}
+        AISENSY_CAMPAIGN_T4: ${{ secrets.AISENSY_CAMPAIGN_T4 }}
+        AISENSY_CAMPAIGN_T5: ${{ secrets.AISENSY_CAMPAIGN_T5 }}
+        WHATSAPP_DRIP_CAMPAIGN: ${{ secrets.WHATSAPP_DRIP_CAMPAIGN }}
+        DRIP_SCHEDULE_UNIT: ${{ secrets.DRIP_SCHEDULE_UNIT }}
         
       run: |
         echo "🚀 Starting lead automation..."
@@ -96,6 +103,7 @@ jobs:
         [ -f "erickson_leads.csv" ] && git add erickson_leads.csv && echo "✅ Added erickson_leads.csv"
         [ -f "last_run.json" ] && git add last_run.json && echo "✅ Added last_run.json"
         [ -f "zoho_tokens.json" ] && git add zoho_tokens.json && echo "✅ Added zoho_tokens.json"
+        [ -f "whatsapp_drip.json" ] && git add whatsapp_drip.json && echo "✅ Added whatsapp_drip.json"
         
         echo "📊 Git status after adding:"
         git status
@@ -120,6 +128,7 @@ jobs:
           erickson_leads.csv
           last_run.json
           zoho_tokens.json
+          whatsapp_drip.json
         retention-days: 30
         
     - name: Display automation summary
