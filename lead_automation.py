@@ -448,7 +448,7 @@ class LeadAutomation:
 
     def fetch_zoho_leads(self, access_token, api_domain):
         """Fetches leads from Zoho CRM with phone numbers - filtered by specific Lead Sources."""
-        target_sources = ["Google Landing Page", "Form Submission", "Youtube Ads"]
+        target_sources = ["Google Landing Page", "Form Submission", "Whatsapp Marketing"]
         print(f"📞 Fetching leads from Zoho CRM (Lead Sources: {', '.join(target_sources)})...")
 
         headers = {
@@ -485,7 +485,7 @@ class LeadAutomation:
                 print("🔄 Trying COQL search API...")
                 search_url = f"{api_domain}/crm/v8/coql"
                 coql_query = {
-                    "select_query": f"select {fields} from Leads where Lead_Source in ('Google Landing Page', 'Form Submission', 'Youtube Ads') limit 200"
+                    "select_query": f"select {fields} from Leads where Lead_Source in ('Google Landing Page', 'Form Submission', 'Whatsapp Marketing') limit 200"
                 }
                 search_response = requests.post(search_url, headers=headers, json=coql_query)
                 if search_response.status_code == 200:
@@ -553,7 +553,7 @@ class LeadAutomation:
         """Saves leads to CSV file with timestamp - ONLY test leads."""
         current_time = datetime.now().isoformat()
         processed_leads = []
-        target_sources = ["Google Landing Page", "Form Submission", "Youtube Ads"]
+        target_sources = ["Google Landing Page", "Form Submission", "Whatsapp Marketing"]
 
         for lead in leads:
             # FILTER: Only save leads with target Lead Sources
@@ -678,7 +678,7 @@ class LeadAutomation:
 
         processed_leads = []
         drip_entries = []
-        target_sources = ["Google Landing Page", "Form Submission", "Youtube Ads"]
+        target_sources = ["Google Landing Page", "Form Submission", "Whatsapp Marketing"]
         campaign_name = self.get_template_campaign(1)
         media_url, media_filename = self.get_template_media(1)
 
