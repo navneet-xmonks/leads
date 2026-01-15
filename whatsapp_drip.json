@@ -220,5 +220,77 @@
     "next_step": 2,
     "next_send_at": "2026-01-15T09:50:58.250150",
     "next_campaign": "template2"
+  },
+  {
+    "phone": "+919916137898",
+    "lead_id": "3406196000046142001",
+    "first_name": "BINU",
+    "last_name": "PHILIP",
+    "drip_campaign": "Erickson_WhatsApp_Drip",
+    "t1_sent_at": "2026-01-15T05:37:38.803865",
+    "last_step_sent": 1,
+    "next_step": 2,
+    "next_send_at": "2026-01-16T05:37:38.803865",
+    "next_campaign": "template2"
+  },
+  {
+    "phone": "+919773838601",
+    "lead_id": "3406196000046137001",
+    "first_name": "Mohammad",
+    "last_name": "Nadeem",
+    "drip_campaign": "Erickson_WhatsApp_Drip",
+    "t1_sent_at": "2026-01-15T05:37:41.747269",
+    "last_step_sent": 1,
+    "next_step": 2,
+    "next_send_at": "2026-01-16T05:37:41.747269",
+    "next_campaign": "template2"
+  },
+  {
+    "phone": "+919989565967",
+    "lead_id": "3406196000046130001",
+    "first_name": "KRISHNA VAMSI",
+    "last_name": "KOKKILIGADDA",
+    "drip_campaign": "Erickson_WhatsApp_Drip",
+    "t1_sent_at": "2026-01-15T05:37:47.635018",
+    "last_step_sent": 1,
+    "next_step": 2,
+    "next_send_at": "2026-01-16T05:37:47.635018",
+    "next_campaign": "template2"
+  },
+  {
+    "phone": "+918534898352",
+    "lead_id": "3406196000046126001",
+    "first_name": "SAKSHI",
+    "last_name": "GOEL",
+    "drip_campaign": "Erickson_WhatsApp_Drip",
+    "t1_sent_at": "2026-01-15T05:37:50.578256",
+    "last_step_sent": 1,
+    "next_step": 2,
+    "next_send_at": "2026-01-16T05:37:50.578256",
+    "next_campaign": "template2"
+  },
+  {
+    "phone": "+918527753535",
+    "lead_id": "3406196000046096001",
+    "first_name": "Aradhana",
+    "last_name": "Gambhir",
+    "drip_campaign": "Erickson_WhatsApp_Drip",
+    "t1_sent_at": "2026-01-15T05:37:53.517877",
+    "last_step_sent": 1,
+    "next_step": 2,
+    "next_send_at": "2026-01-16T05:37:53.517877",
+    "next_campaign": "template2"
+  },
+  {
+    "phone": "+919654002051",
+    "lead_id": "3406196000046086001",
+    "first_name": "GAURAV",
+    "last_name": "AGNIHOTRI",
+    "drip_campaign": "Erickson_WhatsApp_Drip",
+    "t1_sent_at": "2026-01-15T05:37:56.457391",
+    "last_step_sent": 1,
+    "next_step": 2,
+    "next_send_at": "2026-01-16T05:37:56.457391",
+    "next_campaign": "template2"
   }
 ]
