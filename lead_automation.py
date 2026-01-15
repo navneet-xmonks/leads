@@ -448,7 +448,7 @@ class LeadAutomation:
 
     def fetch_zoho_leads(self, access_token, api_domain):
         """Fetches leads from Zoho CRM with phone numbers - filtered by specific Lead Sources."""
-        target_sources = ["Google Ads 2025 Ads 2025", "Form Submission", "Whatsapp Marketing","Youtube Ads"]
+        target_sources = ["Google Ads 2025", "Form Submission", "Whatsapp Marketing","Youtube Ads"]
         print(f"📞 Fetching leads from Zoho CRM (Lead Sources: {', '.join(target_sources)})...")
 
         headers = {
