@@ -678,7 +678,7 @@ class LeadAutomation:
 
         processed_leads = []
         drip_entries = []
-        target_sources = ["Google Ads 2025 Landing Page", "Form Submission", "Whatsapp Marketing","Youtube Ads"]
+        target_sources = ["Google Ads 2025", "Form Submission", "Whatsapp Marketing","Youtube Ads"]
         campaign_name = self.get_template_campaign(1)
         media_url, media_filename = self.get_template_media(1)
 
