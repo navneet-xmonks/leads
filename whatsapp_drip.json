@@ -216,10 +216,12 @@
     "last_name": "Jain",
     "drip_campaign": "Erickson_WhatsApp_Drip",
     "t1_sent_at": "2026-01-14T09:50:58.250150",
-    "last_step_sent": 1,
-    "next_step": 2,
-    "next_send_at": "2026-01-15T09:50:58.250150",
-    "next_campaign": "template2"
+    "last_step_sent": 2,
+    "next_step": 3,
+    "next_send_at": "2026-01-17T09:50:58.250150",
+    "next_campaign": "template3",
+    "last_sent_at": "2026-01-15T11:10:34.929811",
+    "last_campaign": "template2"
   },
   {
     "phone": "+919916137898",
@@ -951,6 +953,18 @@
     "last_step_sent": 1,
     "next_step": 2,
     "next_send_at": "2026-01-16T06:16:52.587249",
+    "next_campaign": "template2"
+  },
+  {
+    "phone": "+919679779504",
+    "lead_id": "3406196000046167001",
+    "first_name": "Piyali",
+    "last_name": "Banerjee",
+    "drip_campaign": "Erickson_WhatsApp_Drip",
+    "t1_sent_at": "2026-01-15T11:10:27.148278",
+    "last_step_sent": 1,
+    "next_step": 2,
+    "next_send_at": "2026-01-16T11:10:27.148278",
     "next_campaign": "template2"
   }
 ]
