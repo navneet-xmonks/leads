@@ -1,101 +1,17 @@
 [
   {
-    "phone": "+918954702907",
-    "lead_id": "3406196000048505001",
-    "first_name": "A",
-    "last_name": "G",
-    "drip_campaign": "Erickson_WhatsApp_Drip",
-    "t1_sent_at": "2026-03-01T09:51:26.670858",
-    "last_step_sent": 4,
-    "next_step": 5,
-    "next_send_at": "2026-03-07T09:51:26.670858",
-    "next_campaign": "template5",
-    "last_sent_at": "2026-03-22T09:44:34.658597",
-    "last_campaign": "template4"
-  },
-  {
-    "phone": "+919773686525",
-    "lead_id": "3406196000048504001",
-    "first_name": "Shrishti",
-    "last_name": "Suman",
-    "drip_campaign": "Erickson_WhatsApp_Drip",
-    "t1_sent_at": "2026-03-01T09:51:29.628696",
-    "last_step_sent": 4,
-    "next_step": 5,
-    "next_send_at": "2026-03-07T09:51:29.628696",
-    "next_campaign": "template5",
-    "last_sent_at": "2026-03-22T09:44:34.658597",
-    "last_campaign": "template4"
-  },
-  {
-    "phone": "+918263859203",
-    "lead_id": "3406196000048501001",
-    "first_name": "Sarika",
-    "last_name": "M",
-    "drip_campaign": "Erickson_WhatsApp_Drip",
-    "t1_sent_at": "2026-03-01T09:51:32.627549",
-    "last_step_sent": 4,
-    "next_step": 5,
-    "next_send_at": "2026-03-07T09:51:32.627549",
-    "next_campaign": "template5",
-    "last_sent_at": "2026-03-22T09:44:34.658597",
-    "last_campaign": "template4"
-  },
-  {
-    "phone": "+919490601820",
-    "lead_id": "3406196000048497001",
-    "first_name": "Mohd",
-    "last_name": "Hasmani",
-    "drip_campaign": "Erickson_WhatsApp_Drip",
-    "t1_sent_at": "2026-03-01T09:51:35.670869",
-    "last_step_sent": 4,
-    "next_step": 5,
-    "next_send_at": "2026-03-07T09:51:35.670869",
-    "next_campaign": "template5",
-    "last_sent_at": "2026-03-22T09:44:34.658597",
-    "last_campaign": "template4"
-  },
-  {
-    "phone": "+919507960702",
-    "lead_id": "3406196000048495001",
-    "first_name": "Sarika",
-    "last_name": "Gupta",
-    "drip_campaign": "Erickson_WhatsApp_Drip",
-    "t1_sent_at": "2026-03-01T09:51:38.668363",
-    "last_step_sent": 4,
-    "next_step": 5,
-    "next_send_at": "2026-03-07T09:51:38.668363",
-    "next_campaign": "template5",
-    "last_sent_at": "2026-03-22T09:44:34.658597",
-    "last_campaign": "template4"
-  },
-  {
-    "phone": "+917026614696",
-    "lead_id": "3406196000048457030",
-    "first_name": "Vishnu Bharath",
-    "last_name": "Pothuraju",
-    "drip_campaign": "Erickson_WhatsApp_Drip",
-    "t1_sent_at": "2026-03-01T09:51:41.636907",
-    "last_step_sent": 4,
-    "next_step": 5,
-    "next_send_at": "2026-03-07T09:51:41.636907",
-    "next_campaign": "template5",
-    "last_sent_at": "2026-03-22T09:44:34.658597",
-    "last_campaign": "template4"
-  },
-  {
     "phone": "+919810866611",
     "lead_id": "3406196000048517001",
     "first_name": "Mahesh Chandra",
     "last_name": "Kalouni",
     "drip_campaign": "Erickson_WhatsApp_Drip",
     "t1_sent_at": "2026-03-02T10:11:25.885091",
-    "last_step_sent": 3,
-    "next_step": 4,
-    "next_send_at": "2026-03-07T10:11:25.885091",
-    "next_campaign": "template4",
-    "last_sent_at": "2026-03-22T09:44:34.658597",
-    "last_campaign": "template3"
+    "last_step_sent": 4,
+    "next_step": 5,
+    "next_send_at": "2026-03-08T10:11:25.885091",
+    "next_campaign": "template5",
+    "last_sent_at": "2026-03-23T09:49:52.213020",
+    "last_campaign": "template4"
   },
   {
     "phone": "+919870114543",
@@ -104,12 +20,12 @@
     "last_name": "Sarkar",
     "drip_campaign": "Erickson_WhatsApp_Drip",
     "t1_sent_at": "2026-03-02T10:11:28.952391",
-    "last_step_sent": 3,
-    "next_step": 4,
-    "next_send_at": "2026-03-07T10:11:28.952391",
-    "next_campaign": "template4",
-    "last_sent_at": "2026-03-22T09:44:34.658597",
-    "last_campaign": "template3"
+    "last_step_sent": 4,
+    "next_step": 5,
+    "next_send_at": "2026-03-08T10:11:28.952391",
+    "next_campaign": "template5",
+    "last_sent_at": "2026-03-23T09:49:52.213020",
+    "last_campaign": "template4"
   },
   {
     "phone": "+919324667442",
@@ -118,12 +34,12 @@
     "last_name": "Panigrahi",
     "drip_campaign": "Erickson_WhatsApp_Drip",
     "t1_sent_at": "2026-03-02T10:11:31.856976",
-    "last_step_sent": 3,
-    "next_step": 4,
-    "next_send_at": "2026-03-07T10:11:31.856976",
-    "next_campaign": "template4",
-    "last_sent_at": "2026-03-22T09:44:34.658597",
-    "last_campaign": "template3"
+    "last_step_sent": 4,
+    "next_step": 5,
+    "next_send_at": "2026-03-08T10:11:31.856976",
+    "next_campaign": "template5",
+    "last_sent_at": "2026-03-23T09:49:52.213020",
+    "last_campaign": "template4"
   },
   {
     "phone": "+918826004346",
@@ -132,12 +48,12 @@
     "last_name": "advertent",
     "drip_campaign": "Erickson_WhatsApp_Drip",
     "t1_sent_at": "2026-03-02T10:11:34.769593",
-    "last_step_sent": 3,
-    "next_step": 4,
-    "next_send_at": "2026-03-07T10:11:34.769593",
-    "next_campaign": "template4",
-    "last_sent_at": "2026-03-22T09:44:34.658597",
-    "last_campaign": "template3"
+    "last_step_sent": 4,
+    "next_step": 5,
+    "next_send_at": "2026-03-08T10:11:34.769593",
+    "next_campaign": "template5",
+    "last_sent_at": "2026-03-23T09:49:52.213020",
+    "last_campaign": "template4"
   },
   {
     "phone": "+919810917771",
@@ -146,12 +62,12 @@
     "last_name": "Khanna",
     "drip_campaign": "Erickson_WhatsApp_Drip",
     "t1_sent_at": "2026-03-03T10:05:35.878467",
-    "last_step_sent": 3,
-    "next_step": 4,
-    "next_send_at": "2026-03-08T10:05:35.878467",
-    "next_campaign": "template4",
-    "last_sent_at": "2026-03-22T09:44:34.658597",
-    "last_campaign": "template3"
+    "last_step_sent": 4,
+    "next_step": 5,
+    "next_send_at": "2026-03-09T10:05:35.878467",
+    "next_campaign": "template5",
+    "last_sent_at": "2026-03-23T09:49:52.213020",
+    "last_campaign": "template4"
   },
   {
     "phone": "+919971762977",
@@ -160,12 +76,12 @@
     "last_name": "Doshi",
     "drip_campaign": "Erickson_WhatsApp_Drip",
     "t1_sent_at": "2026-03-03T10:05:38.917104",
-    "last_step_sent": 3,
-    "next_step": 4,
-    "next_send_at": "2026-03-08T10:05:38.917104",
-    "next_campaign": "template4",
-    "last_sent_at": "2026-03-22T09:44:34.658597",
-    "last_campaign": "template3"
+    "last_step_sent": 4,
+    "next_step": 5,
+    "next_send_at": "2026-03-09T10:05:38.917104",
+    "next_campaign": "template5",
+    "last_sent_at": "2026-03-23T09:49:52.213020",
+    "last_campaign": "template4"
   },
   {
     "phone": "+919845052261",
@@ -174,12 +90,12 @@
     "last_name": "Narasimhan",
     "drip_campaign": "Erickson_WhatsApp_Drip",
     "t1_sent_at": "2026-03-03T10:05:44.943466",
-    "last_step_sent": 3,
-    "next_step": 4,
-    "next_send_at": "2026-03-08T10:05:44.943466",
-    "next_campaign": "template4",
-    "last_sent_at": "2026-03-22T09:44:34.658597",
-    "last_campaign": "template3"
+    "last_step_sent": 4,
+    "next_step": 5,
+    "next_send_at": "2026-03-09T10:05:44.943466",
+    "next_campaign": "template5",
+    "last_sent_at": "2026-03-23T09:49:52.213020",
+    "last_campaign": "template4"
   },
   {
     "phone": "+919849455070",
@@ -188,12 +104,12 @@
     "last_name": "Nayar",
     "drip_campaign": "Erickson_WhatsApp_Drip",
     "t1_sent_at": "2026-03-03T10:05:47.952179",
-    "last_step_sent": 3,
-    "next_step": 4,
-    "next_send_at": "2026-03-08T10:05:47.952179",
-    "next_campaign": "template4",
-    "last_sent_at": "2026-03-22T09:44:34.658597",
-    "last_campaign": "template3"
+    "last_step_sent": 4,
+    "next_step": 5,
+    "next_send_at": "2026-03-09T10:05:47.952179",
+    "next_campaign": "template5",
+    "last_sent_at": "2026-03-23T09:49:52.213020",
+    "last_campaign": "template4"
   },
   {
     "phone": "+919810402487",
@@ -202,12 +118,12 @@
     "last_name": "Madhusudanan",
     "drip_campaign": "Erickson_WhatsApp_Drip",
     "t1_sent_at": "2026-03-03T10:05:50.946975",
-    "last_step_sent": 3,
-    "next_step": 4,
-    "next_send_at": "2026-03-08T10:05:50.946975",
-    "next_campaign": "template4",
-    "last_sent_at": "2026-03-22T09:44:34.658597",
-    "last_campaign": "template3"
+    "last_step_sent": 4,
+    "next_step": 5,
+    "next_send_at": "2026-03-09T10:05:50.946975",
+    "next_campaign": "template5",
+    "last_sent_at": "2026-03-23T09:49:52.213020",
+    "last_campaign": "template4"
   },
   {
     "phone": "+918755813050",
@@ -216,12 +132,12 @@
     "last_name": "Pereira",
     "drip_campaign": "Erickson_WhatsApp_Drip",
     "t1_sent_at": "2026-03-03T10:05:56.975207",
-    "last_step_sent": 3,
-    "next_step": 4,
-    "next_send_at": "2026-03-08T10:05:56.975207",
-    "next_campaign": "template4",
-    "last_sent_at": "2026-03-22T09:44:34.658597",
-    "last_campaign": "template3"
+    "last_step_sent": 4,
+    "next_step": 5,
+    "next_send_at": "2026-03-09T10:05:56.975207",
+    "next_campaign": "template5",
+    "last_sent_at": "2026-03-23T09:49:52.213020",
+    "last_campaign": "template4"
   },
   {
     "phone": "+918275407628",
@@ -230,10 +146,12 @@
     "last_name": "Dalvi",
     "drip_campaign": "Erickson_WhatsApp_Drip",
     "t1_sent_at": "2026-03-21T09:53:25.844573",
-    "last_step_sent": 1,
-    "next_step": 2,
-    "next_send_at": "2026-03-22T09:53:25.844573",
-    "next_campaign": "template2"
+    "last_step_sent": 2,
+    "next_step": 3,
+    "next_send_at": "2026-03-24T09:53:25.844573",
+    "next_campaign": "template3",
+    "last_sent_at": "2026-03-23T09:49:52.213020",
+    "last_campaign": "template2"
   },
   {
     "phone": "+919867140757",
@@ -242,10 +160,12 @@
     "last_name": "Jain",
     "drip_campaign": "Erickson_WhatsApp_Drip",
     "t1_sent_at": "2026-03-21T09:53:28.724606",
-    "last_step_sent": 1,
-    "next_step": 2,
-    "next_send_at": "2026-03-22T09:53:28.724606",
-    "next_campaign": "template2"
+    "last_step_sent": 2,
+    "next_step": 3,
+    "next_send_at": "2026-03-24T09:53:28.724606",
+    "next_campaign": "template3",
+    "last_sent_at": "2026-03-23T09:49:52.213020",
+    "last_campaign": "template2"
   },
   {
     "phone": "+919600890864",
@@ -254,10 +174,12 @@
     "last_name": "G",
     "drip_campaign": "Erickson_WhatsApp_Drip",
     "t1_sent_at": "2026-03-21T09:53:31.596492",
-    "last_step_sent": 1,
-    "next_step": 2,
-    "next_send_at": "2026-03-22T09:53:31.596492",
-    "next_campaign": "template2"
+    "last_step_sent": 2,
+    "next_step": 3,
+    "next_send_at": "2026-03-24T09:53:31.596492",
+    "next_campaign": "template3",
+    "last_sent_at": "2026-03-23T09:49:52.213020",
+    "last_campaign": "template2"
   },
   {
     "phone": "+917989176067",
@@ -266,10 +188,12 @@
     "last_name": "NITHYADEVI",
     "drip_campaign": "Erickson_WhatsApp_Drip",
     "t1_sent_at": "2026-03-21T09:53:34.466118",
-    "last_step_sent": 1,
-    "next_step": 2,
-    "next_send_at": "2026-03-22T09:53:34.466118",
-    "next_campaign": "template2"
+    "last_step_sent": 2,
+    "next_step": 3,
+    "next_send_at": "2026-03-24T09:53:34.466118",
+    "next_campaign": "template3",
+    "last_sent_at": "2026-03-23T09:49:52.213020",
+    "last_campaign": "template2"
   },
   {
     "phone": "+919916000572",
@@ -278,10 +202,12 @@
     "last_name": "Agrawal",
     "drip_campaign": "Erickson_WhatsApp_Drip",
     "t1_sent_at": "2026-03-21T09:53:37.343396",
-    "last_step_sent": 1,
-    "next_step": 2,
-    "next_send_at": "2026-03-22T09:53:37.343396",
-    "next_campaign": "template2"
+    "last_step_sent": 2,
+    "next_step": 3,
+    "next_send_at": "2026-03-24T09:53:37.343396",
+    "next_campaign": "template3",
+    "last_sent_at": "2026-03-23T09:49:52.213020",
+    "last_campaign": "template2"
   },
   {
     "phone": "+919650527255",
@@ -290,10 +216,12 @@
     "last_name": "fotedar",
     "drip_campaign": "Erickson_WhatsApp_Drip",
     "t1_sent_at": "2026-03-21T09:53:40.242619",
-    "last_step_sent": 1,
-    "next_step": 2,
-    "next_send_at": "2026-03-22T09:53:40.242619",
-    "next_campaign": "template2"
+    "last_step_sent": 2,
+    "next_step": 3,
+    "next_send_at": "2026-03-24T09:53:40.242619",
+    "next_campaign": "template3",
+    "last_sent_at": "2026-03-23T09:49:52.213020",
+    "last_campaign": "template2"
   },
   {
     "phone": "+919867645015",
@@ -302,10 +230,12 @@
     "last_name": "K",
     "drip_campaign": "Erickson_WhatsApp_Drip",
     "t1_sent_at": "2026-03-21T09:53:43.136603",
-    "last_step_sent": 1,
-    "next_step": 2,
-    "next_send_at": "2026-03-22T09:53:43.136603",
-    "next_campaign": "template2"
+    "last_step_sent": 2,
+    "next_step": 3,
+    "next_send_at": "2026-03-24T09:53:43.136603",
+    "next_campaign": "template3",
+    "last_sent_at": "2026-03-23T09:49:52.213020",
+    "last_campaign": "template2"
   },
   {
     "phone": "+919665044593",
@@ -314,10 +244,12 @@
     "last_name": "Udekar",
     "drip_campaign": "Erickson_WhatsApp_Drip",
     "t1_sent_at": "2026-03-21T09:53:46.025930",
-    "last_step_sent": 1,
-    "next_step": 2,
-    "next_send_at": "2026-03-22T09:53:46.025930",
-    "next_campaign": "template2"
+    "last_step_sent": 2,
+    "next_step": 3,
+    "next_send_at": "2026-03-24T09:53:46.025930",
+    "next_campaign": "template3",
+    "last_sent_at": "2026-03-23T09:49:52.213020",
+    "last_campaign": "template2"
   },
   {
     "phone": "+919969638564",
@@ -326,10 +258,12 @@
     "last_name": "Raul",
     "drip_campaign": "Erickson_WhatsApp_Drip",
     "t1_sent_at": "2026-03-21T09:53:48.905251",
-    "last_step_sent": 1,
-    "next_step": 2,
-    "next_send_at": "2026-03-22T09:53:48.905251",
-    "next_campaign": "template2"
+    "last_step_sent": 2,
+    "next_step": 3,
+    "next_send_at": "2026-03-24T09:53:48.905251",
+    "next_campaign": "template3",
+    "last_sent_at": "2026-03-23T09:49:52.213020",
+    "last_campaign": "template2"
   },
   {
     "phone": "+919699499151",
@@ -338,10 +272,12 @@
     "last_name": "Changani",
     "drip_campaign": "Erickson_WhatsApp_Drip",
     "t1_sent_at": "2026-03-21T09:53:51.787693",
-    "last_step_sent": 1,
-    "next_step": 2,
-    "next_send_at": "2026-03-22T09:53:51.787693",
-    "next_campaign": "template2"
+    "last_step_sent": 2,
+    "next_step": 3,
+    "next_send_at": "2026-03-24T09:53:51.787693",
+    "next_campaign": "template3",
+    "last_sent_at": "2026-03-23T09:49:52.213020",
+    "last_campaign": "template2"
   },
   {
     "phone": "+919757110630",
@@ -350,10 +286,12 @@
     "last_name": "Kurdekar",
     "drip_campaign": "Erickson_WhatsApp_Drip",
     "t1_sent_at": "2026-03-21T09:53:54.686469",
-    "last_step_sent": 1,
-    "next_step": 2,
-    "next_send_at": "2026-03-22T09:53:54.686469",
-    "next_campaign": "template2"
+    "last_step_sent": 2,
+    "next_step": 3,
+    "next_send_at": "2026-03-24T09:53:54.686469",
+    "next_campaign": "template3",
+    "last_sent_at": "2026-03-23T09:49:52.213020",
+    "last_campaign": "template2"
   },
   {
     "phone": "+919739999784",
@@ -362,10 +300,12 @@
     "last_name": "Balaji",
     "drip_campaign": "Erickson_WhatsApp_Drip",
     "t1_sent_at": "2026-03-21T09:54:00.497292",
-    "last_step_sent": 1,
-    "next_step": 2,
-    "next_send_at": "2026-03-22T09:54:00.497292",
-    "next_campaign": "template2"
+    "last_step_sent": 2,
+    "next_step": 3,
+    "next_send_at": "2026-03-24T09:54:00.497292",
+    "next_campaign": "template3",
+    "last_sent_at": "2026-03-23T09:49:52.213020",
+    "last_campaign": "template2"
   },
   {
     "phone": "+919900771044",
@@ -374,10 +314,12 @@
     "last_name": "Purnaiah",
     "drip_campaign": "Erickson_WhatsApp_Drip",
     "t1_sent_at": "2026-03-21T09:54:03.392121",
-    "last_step_sent": 1,
-    "next_step": 2,
-    "next_send_at": "2026-03-22T09:54:03.392121",
-    "next_campaign": "template2"
+    "last_step_sent": 2,
+    "next_step": 3,
+    "next_send_at": "2026-03-24T09:54:03.392121",
+    "next_campaign": "template3",
+    "last_sent_at": "2026-03-23T09:49:52.213020",
+    "last_campaign": "template2"
   },
   {
     "phone": "+919845260436",
@@ -386,10 +328,12 @@
     "last_name": "Dixit",
     "drip_campaign": "Erickson_WhatsApp_Drip",
     "t1_sent_at": "2026-03-21T09:54:09.117395",
-    "last_step_sent": 1,
-    "next_step": 2,
-    "next_send_at": "2026-03-22T09:54:09.117395",
-    "next_campaign": "template2"
+    "last_step_sent": 2,
+    "next_step": 3,
+    "next_send_at": "2026-03-24T09:54:09.117395",
+    "next_campaign": "template3",
+    "last_sent_at": "2026-03-23T09:49:52.213020",
+    "last_campaign": "template2"
   },
   {
     "phone": "+917374939770",
@@ -398,10 +342,12 @@
     "last_name": "Nair",
     "drip_campaign": "Erickson_WhatsApp_Drip",
     "t1_sent_at": "2026-03-21T09:54:11.988964",
-    "last_step_sent": 1,
-    "next_step": 2,
-    "next_send_at": "2026-03-22T09:54:11.988964",
-    "next_campaign": "template2"
+    "last_step_sent": 2,
+    "next_step": 3,
+    "next_send_at": "2026-03-24T09:54:11.988964",
+    "next_campaign": "template3",
+    "last_sent_at": "2026-03-23T09:49:52.213020",
+    "last_campaign": "template2"
   },
   {
     "phone": "+917666457984",
@@ -410,10 +356,12 @@
     "last_name": "Aulak",
     "drip_campaign": "Erickson_WhatsApp_Drip",
     "t1_sent_at": "2026-03-21T09:54:14.857607",
-    "last_step_sent": 1,
-    "next_step": 2,
-    "next_send_at": "2026-03-22T09:54:14.857607",
-    "next_campaign": "template2"
+    "last_step_sent": 2,
+    "next_step": 3,
+    "next_send_at": "2026-03-24T09:54:14.857607",
+    "next_campaign": "template3",
+    "last_sent_at": "2026-03-23T09:49:52.213020",
+    "last_campaign": "template2"
   },
   {
     "phone": "+919911005199",
@@ -422,10 +370,12 @@
     "last_name": "Mishra",
     "drip_campaign": "Erickson_WhatsApp_Drip",
     "t1_sent_at": "2026-03-21T09:54:17.737775",
-    "last_step_sent": 1,
-    "next_step": 2,
-    "next_send_at": "2026-03-22T09:54:17.737775",
-    "next_campaign": "template2"
+    "last_step_sent": 2,
+    "next_step": 3,
+    "next_send_at": "2026-03-24T09:54:17.737775",
+    "next_campaign": "template3",
+    "last_sent_at": "2026-03-23T09:49:52.213020",
+    "last_campaign": "template2"
   },
   {
     "phone": "+917702188081",
@@ -434,10 +384,12 @@
     "last_name": "Vinjamuri",
     "drip_campaign": "Erickson_WhatsApp_Drip",
     "t1_sent_at": "2026-03-21T09:54:20.603703",
-    "last_step_sent": 1,
-    "next_step": 2,
-    "next_send_at": "2026-03-22T09:54:20.603703",
-    "next_campaign": "template2"
+    "last_step_sent": 2,
+    "next_step": 3,
+    "next_send_at": "2026-03-24T09:54:20.603703",
+    "next_campaign": "template3",
+    "last_sent_at": "2026-03-23T09:49:52.213020",
+    "last_campaign": "template2"
   },
   {
     "phone": "+919818558274",
@@ -446,10 +398,12 @@
     "last_name": "Duggal",
     "drip_campaign": "Erickson_WhatsApp_Drip",
     "t1_sent_at": "2026-03-21T09:54:23.461561",
-    "last_step_sent": 1,
-    "next_step": 2,
-    "next_send_at": "2026-03-22T09:54:23.461561",
-    "next_campaign": "template2"
+    "last_step_sent": 2,
+    "next_step": 3,
+    "next_send_at": "2026-03-24T09:54:23.461561",
+    "next_campaign": "template3",
+    "last_sent_at": "2026-03-23T09:49:52.213020",
+    "last_campaign": "template2"
   },
   {
     "phone": "+919890165924",
@@ -458,10 +412,12 @@
     "last_name": "Shende",
     "drip_campaign": "Erickson_WhatsApp_Drip",
     "t1_sent_at": "2026-03-21T09:54:26.492304",
-    "last_step_sent": 1,
-    "next_step": 2,
-    "next_send_at": "2026-03-22T09:54:26.492304",
-    "next_campaign": "template2"
+    "last_step_sent": 2,
+    "next_step": 3,
+    "next_send_at": "2026-03-24T09:54:26.492304",
+    "next_campaign": "template3",
+    "last_sent_at": "2026-03-23T09:49:52.213020",
+    "last_campaign": "template2"
   },
   {
     "phone": "+918806669890",
@@ -470,10 +426,12 @@
     "last_name": "Chandy",
     "drip_campaign": "Erickson_WhatsApp_Drip",
     "t1_sent_at": "2026-03-21T09:54:32.252504",
-    "last_step_sent": 1,
-    "next_step": 2,
-    "next_send_at": "2026-03-22T09:54:32.252504",
-    "next_campaign": "template2"
+    "last_step_sent": 2,
+    "next_step": 3,
+    "next_send_at": "2026-03-24T09:54:32.252504",
+    "next_campaign": "template3",
+    "last_sent_at": "2026-03-23T09:49:52.213020",
+    "last_campaign": "template2"
   },
   {
     "phone": "+919384086373",
@@ -482,10 +440,12 @@
     "last_name": "L",
     "drip_campaign": "Erickson_WhatsApp_Drip",
     "t1_sent_at": "2026-03-21T09:54:35.136127",
-    "last_step_sent": 1,
-    "next_step": 2,
-    "next_send_at": "2026-03-22T09:54:35.136127",
-    "next_campaign": "template2"
+    "last_step_sent": 2,
+    "next_step": 3,
+    "next_send_at": "2026-03-24T09:54:35.136127",
+    "next_campaign": "template3",
+    "last_sent_at": "2026-03-23T09:49:52.213020",
+    "last_campaign": "template2"
   },
   {
     "phone": "+919801169886",
@@ -494,10 +454,12 @@
     "last_name": "Riyazuddin",
     "drip_campaign": "Erickson_WhatsApp_Drip",
     "t1_sent_at": "2026-03-21T09:54:38.004147",
-    "last_step_sent": 1,
-    "next_step": 2,
-    "next_send_at": "2026-03-22T09:54:38.004147",
-    "next_campaign": "template2"
+    "last_step_sent": 2,
+    "next_step": 3,
+    "next_send_at": "2026-03-24T09:54:38.004147",
+    "next_campaign": "template3",
+    "last_sent_at": "2026-03-23T09:49:52.213020",
+    "last_campaign": "template2"
   },
   {
     "phone": "+919820413966",
@@ -506,10 +468,12 @@
     "last_name": "Dharmarajan",
     "drip_campaign": "Erickson_WhatsApp_Drip",
     "t1_sent_at": "2026-03-21T09:54:43.731912",
-    "last_step_sent": 1,
-    "next_step": 2,
-    "next_send_at": "2026-03-22T09:54:43.731912",
-    "next_campaign": "template2"
+    "last_step_sent": 2,
+    "next_step": 3,
+    "next_send_at": "2026-03-24T09:54:43.731912",
+    "next_campaign": "template3",
+    "last_sent_at": "2026-03-23T09:49:52.213020",
+    "last_campaign": "template2"
   },
   {
     "phone": "+918600782781",
@@ -518,10 +482,12 @@
     "last_name": "Mishra",
     "drip_campaign": "Erickson_WhatsApp_Drip",
     "t1_sent_at": "2026-03-21T09:54:49.492622",
-    "last_step_sent": 1,
-    "next_step": 2,
-    "next_send_at": "2026-03-22T09:54:49.492622",
-    "next_campaign": "template2"
+    "last_step_sent": 2,
+    "next_step": 3,
+    "next_send_at": "2026-03-24T09:54:49.492622",
+    "next_campaign": "template3",
+    "last_sent_at": "2026-03-23T09:49:52.213020",
+    "last_campaign": "template2"
   },
   {
     "phone": "+917762845284",
@@ -530,10 +496,12 @@
     "last_name": "Saxena",
     "drip_campaign": "Erickson_WhatsApp_Drip",
     "t1_sent_at": "2026-03-21T09:54:52.387698",
-    "last_step_sent": 1,
-    "next_step": 2,
-    "next_send_at": "2026-03-22T09:54:52.387698",
-    "next_campaign": "template2"
+    "last_step_sent": 2,
+    "next_step": 3,
+    "next_send_at": "2026-03-24T09:54:52.387698",
+    "next_campaign": "template3",
+    "last_sent_at": "2026-03-23T09:49:52.213020",
+    "last_campaign": "template2"
   },
   {
     "phone": "+919891351260",
@@ -542,10 +510,12 @@
     "last_name": "Dutt",
     "drip_campaign": "Erickson_WhatsApp_Drip",
     "t1_sent_at": "2026-03-21T09:54:55.292192",
-    "last_step_sent": 1,
-    "next_step": 2,
-    "next_send_at": "2026-03-22T09:54:55.292192",
-    "next_campaign": "template2"
+    "last_step_sent": 2,
+    "next_step": 3,
+    "next_send_at": "2026-03-24T09:54:55.292192",
+    "next_campaign": "template3",
+    "last_sent_at": "2026-03-23T09:49:52.213020",
+    "last_campaign": "template2"
   },
   {
     "phone": "+919063304491",
@@ -554,10 +524,12 @@
     "last_name": "Sesha",
     "drip_campaign": "Erickson_WhatsApp_Drip",
     "t1_sent_at": "2026-03-21T09:54:58.169854",
-    "last_step_sent": 1,
-    "next_step": 2,
-    "next_send_at": "2026-03-22T09:54:58.169854",
-    "next_campaign": "template2"
+    "last_step_sent": 2,
+    "next_step": 3,
+    "next_send_at": "2026-03-24T09:54:58.169854",
+    "next_campaign": "template3",
+    "last_sent_at": "2026-03-23T09:49:52.213020",
+    "last_campaign": "template2"
   },
   {
     "phone": "+917032094400",
@@ -566,10 +538,12 @@
     "last_name": "Neelapala",
     "drip_campaign": "Erickson_WhatsApp_Drip",
     "t1_sent_at": "2026-03-21T09:55:01.039181",
-    "last_step_sent": 1,
-    "next_step": 2,
-    "next_send_at": "2026-03-22T09:55:01.039181",
-    "next_campaign": "template2"
+    "last_step_sent": 2,
+    "next_step": 3,
+    "next_send_at": "2026-03-24T09:55:01.039181",
+    "next_campaign": "template3",
+    "last_sent_at": "2026-03-23T09:49:52.213020",
+    "last_campaign": "template2"
   },
   {
     "phone": "+919670125432",
@@ -578,10 +552,12 @@
     "last_name": "Pandey",
     "drip_campaign": "Erickson_WhatsApp_Drip",
     "t1_sent_at": "2026-03-21T09:55:03.920237",
-    "last_step_sent": 1,
-    "next_step": 2,
-    "next_send_at": "2026-03-22T09:55:03.920237",
-    "next_campaign": "template2"
+    "last_step_sent": 2,
+    "next_step": 3,
+    "next_send_at": "2026-03-24T09:55:03.920237",
+    "next_campaign": "template3",
+    "last_sent_at": "2026-03-23T09:49:52.213020",
+    "last_campaign": "template2"
   },
   {
     "phone": "+919920095780",
@@ -590,10 +566,12 @@
     "last_name": "Virani",
     "drip_campaign": "Erickson_WhatsApp_Drip",
     "t1_sent_at": "2026-03-21T09:55:06.800619",
-    "last_step_sent": 1,
-    "next_step": 2,
-    "next_send_at": "2026-03-22T09:55:06.800619",
-    "next_campaign": "template2"
+    "last_step_sent": 2,
+    "next_step": 3,
+    "next_send_at": "2026-03-24T09:55:06.800619",
+    "next_campaign": "template3",
+    "last_sent_at": "2026-03-23T09:49:52.213020",
+    "last_campaign": "template2"
   },
   {
     "phone": "+919701002382",
@@ -602,10 +580,12 @@
     "last_name": "Mendhekar",
     "drip_campaign": "Erickson_WhatsApp_Drip",
     "t1_sent_at": "2026-03-21T09:55:09.682397",
-    "last_step_sent": 1,
-    "next_step": 2,
-    "next_send_at": "2026-03-22T09:55:09.682397",
-    "next_campaign": "template2"
+    "last_step_sent": 2,
+    "next_step": 3,
+    "next_send_at": "2026-03-24T09:55:09.682397",
+    "next_campaign": "template3",
+    "last_sent_at": "2026-03-23T09:49:52.213020",
+    "last_campaign": "template2"
   },
   {
     "phone": "+917353926136",
@@ -614,10 +594,12 @@
     "last_name": "Tiwari",
     "drip_campaign": "Erickson_WhatsApp_Drip",
     "t1_sent_at": "2026-03-21T09:55:12.554311",
-    "last_step_sent": 1,
-    "next_step": 2,
-    "next_send_at": "2026-03-22T09:55:12.554311",
-    "next_campaign": "template2"
+    "last_step_sent": 2,
+    "next_step": 3,
+    "next_send_at": "2026-03-24T09:55:12.554311",
+    "next_campaign": "template3",
+    "last_sent_at": "2026-03-23T09:49:52.213020",
+    "last_campaign": "template2"
   },
   {
     "phone": "+919716943665",
@@ -626,10 +608,12 @@
     "last_name": "Sharma",
     "drip_campaign": "Erickson_WhatsApp_Drip",
     "t1_sent_at": "2026-03-21T09:55:15.459086",
-    "last_step_sent": 1,
-    "next_step": 2,
-    "next_send_at": "2026-03-22T09:55:15.459086",
-    "next_campaign": "template2"
+    "last_step_sent": 2,
+    "next_step": 3,
+    "next_send_at": "2026-03-24T09:55:15.459086",
+    "next_campaign": "template3",
+    "last_sent_at": "2026-03-23T09:49:52.213020",
+    "last_campaign": "template2"
   },
   {
     "phone": "+919325760415",
@@ -638,10 +622,12 @@
     "last_name": "Jadhav",
     "drip_campaign": "Erickson_WhatsApp_Drip",
     "t1_sent_at": "2026-03-21T09:55:18.345632",
-    "last_step_sent": 1,
-    "next_step": 2,
-    "next_send_at": "2026-03-22T09:55:18.345632",
-    "next_campaign": "template2"
+    "last_step_sent": 2,
+    "next_step": 3,
+    "next_send_at": "2026-03-24T09:55:18.345632",
+    "next_campaign": "template3",
+    "last_sent_at": "2026-03-23T09:49:52.213020",
+    "last_campaign": "template2"
   },
   {
     "phone": "+919892717779",
@@ -650,10 +636,12 @@
     "last_name": "Upadhyay",
     "drip_campaign": "Erickson_WhatsApp_Drip",
     "t1_sent_at": "2026-03-21T09:55:21.244594",
-    "last_step_sent": 1,
-    "next_step": 2,
-    "next_send_at": "2026-03-22T09:55:21.244594",
-    "next_campaign": "template2"
+    "last_step_sent": 2,
+    "next_step": 3,
+    "next_send_at": "2026-03-24T09:55:21.244594",
+    "next_campaign": "template3",
+    "last_sent_at": "2026-03-23T09:49:52.213020",
+    "last_campaign": "template2"
   },
   {
     "phone": "+919769254650",
@@ -662,10 +650,12 @@
     "last_name": "Jain",
     "drip_campaign": "Erickson_WhatsApp_Drip",
     "t1_sent_at": "2026-03-21T09:55:24.123339",
-    "last_step_sent": 1,
-    "next_step": 2,
-    "next_send_at": "2026-03-22T09:55:24.123339",
-    "next_campaign": "template2"
+    "last_step_sent": 2,
+    "next_step": 3,
+    "next_send_at": "2026-03-24T09:55:24.123339",
+    "next_campaign": "template3",
+    "last_sent_at": "2026-03-23T09:49:52.213020",
+    "last_campaign": "template2"
   },
   {
     "phone": "+917022374384",
@@ -674,10 +664,12 @@
     "last_name": "PS",
     "drip_campaign": "Erickson_WhatsApp_Drip",
     "t1_sent_at": "2026-03-21T09:55:29.931289",
-    "last_step_sent": 1,
-    "next_step": 2,
-    "next_send_at": "2026-03-22T09:55:29.931289",
-    "next_campaign": "template2"
+    "last_step_sent": 2,
+    "next_step": 3,
+    "next_send_at": "2026-03-24T09:55:29.931289",
+    "next_campaign": "template3",
+    "last_sent_at": "2026-03-23T09:49:52.213020",
+    "last_campaign": "template2"
   },
   {
     "phone": "+918149676640",
@@ -686,10 +678,12 @@
     "last_name": "Gaikwad",
     "drip_campaign": "Erickson_WhatsApp_Drip",
     "t1_sent_at": "2026-03-21T09:55:32.799234",
-    "last_step_sent": 1,
-    "next_step": 2,
-    "next_send_at": "2026-03-22T09:55:32.799234",
-    "next_campaign": "template2"
+    "last_step_sent": 2,
+    "next_step": 3,
+    "next_send_at": "2026-03-24T09:55:32.799234",
+    "next_campaign": "template3",
+    "last_sent_at": "2026-03-23T09:49:52.213020",
+    "last_campaign": "template2"
   },
   {
     "phone": "+917720001501",
@@ -698,10 +692,12 @@
     "last_name": "dharia",
     "drip_campaign": "Erickson_WhatsApp_Drip",
     "t1_sent_at": "2026-03-21T09:55:35.655985",
-    "last_step_sent": 1,
-    "next_step": 2,
-    "next_send_at": "2026-03-22T09:55:35.655985",
-    "next_campaign": "template2"
+    "last_step_sent": 2,
+    "next_step": 3,
+    "next_send_at": "2026-03-24T09:55:35.655985",
+    "next_campaign": "template3",
+    "last_sent_at": "2026-03-23T09:49:52.213020",
+    "last_campaign": "template2"
   },
   {
     "phone": "+919217750145",
@@ -710,10 +706,12 @@
     "last_name": "Bhardwaj",
     "drip_campaign": "Erickson_WhatsApp_Drip",
     "t1_sent_at": "2026-03-21T09:55:38.559615",
-    "last_step_sent": 1,
-    "next_step": 2,
-    "next_send_at": "2026-03-22T09:55:38.559615",
-    "next_campaign": "template2"
+    "last_step_sent": 2,
+    "next_step": 3,
+    "next_send_at": "2026-03-24T09:55:38.559615",
+    "next_campaign": "template3",
+    "last_sent_at": "2026-03-23T09:49:52.213020",
+    "last_campaign": "template2"
   },
   {
     "phone": "+917489962306",
@@ -722,10 +720,12 @@
     "last_name": "Minocha",
     "drip_campaign": "Erickson_WhatsApp_Drip",
     "t1_sent_at": "2026-03-21T09:55:41.425689",
-    "last_step_sent": 1,
-    "next_step": 2,
-    "next_send_at": "2026-03-22T09:55:41.425689",
-    "next_campaign": "template2"
+    "last_step_sent": 2,
+    "next_step": 3,
+    "next_send_at": "2026-03-24T09:55:41.425689",
+    "next_campaign": "template3",
+    "last_sent_at": "2026-03-23T09:49:52.213020",
+    "last_campaign": "template2"
   },
   {
     "phone": "+918700244787",
@@ -734,10 +734,12 @@
     "last_name": "Singh",
     "drip_campaign": "Erickson_WhatsApp_Drip",
     "t1_sent_at": "2026-03-21T09:55:47.204055",
-    "last_step_sent": 1,
-    "next_step": 2,
-    "next_send_at": "2026-03-22T09:55:47.204055",
-    "next_campaign": "template2"
+    "last_step_sent": 2,
+    "next_step": 3,
+    "next_send_at": "2026-03-24T09:55:47.204055",
+    "next_campaign": "template3",
+    "last_sent_at": "2026-03-23T09:49:52.213020",
+    "last_campaign": "template2"
   },
   {
     "phone": "+919840215820",
@@ -746,10 +748,12 @@
     "last_name": "Prasad",
     "drip_campaign": "Erickson_WhatsApp_Drip",
     "t1_sent_at": "2026-03-21T09:55:50.080871",
-    "last_step_sent": 1,
-    "next_step": 2,
-    "next_send_at": "2026-03-22T09:55:50.080871",
-    "next_campaign": "template2"
+    "last_step_sent": 2,
+    "next_step": 3,
+    "next_send_at": "2026-03-24T09:55:50.080871",
+    "next_campaign": "template3",
+    "last_sent_at": "2026-03-23T09:49:52.213020",
+    "last_campaign": "template2"
   },
   {
     "phone": "+916385431579",
@@ -758,10 +762,12 @@
     "last_name": "Arul",
     "drip_campaign": "Erickson_WhatsApp_Drip",
     "t1_sent_at": "2026-03-21T09:55:52.958030",
-    "last_step_sent": 1,
-    "next_step": 2,
-    "next_send_at": "2026-03-22T09:55:52.958030",
-    "next_campaign": "template2"
+    "last_step_sent": 2,
+    "next_step": 3,
+    "next_send_at": "2026-03-24T09:55:52.958030",
+    "next_campaign": "template3",
+    "last_sent_at": "2026-03-23T09:49:52.213020",
+    "last_campaign": "template2"
   },
   {
     "phone": "+919820348305",
@@ -770,10 +776,12 @@
     "last_name": "Karia",
     "drip_campaign": "Erickson_WhatsApp_Drip",
     "t1_sent_at": "2026-03-21T09:55:55.922346",
-    "last_step_sent": 1,
-    "next_step": 2,
-    "next_send_at": "2026-03-22T09:55:55.922346",
-    "next_campaign": "template2"
+    "last_step_sent": 2,
+    "next_step": 3,
+    "next_send_at": "2026-03-24T09:55:55.922346",
+    "next_campaign": "template3",
+    "last_sent_at": "2026-03-23T09:49:52.213020",
+    "last_campaign": "template2"
   },
   {
     "phone": "+916307528301",
@@ -782,10 +790,12 @@
     "last_name": "Jaiswal",
     "drip_campaign": "Erickson_WhatsApp_Drip",
     "t1_sent_at": "2026-03-21T09:56:01.696007",
-    "last_step_sent": 1,
-    "next_step": 2,
-    "next_send_at": "2026-03-22T09:56:01.696007",
-    "next_campaign": "template2"
+    "last_step_sent": 2,
+    "next_step": 3,
+    "next_send_at": "2026-03-24T09:56:01.696007",
+    "next_campaign": "template3",
+    "last_sent_at": "2026-03-23T09:49:52.213020",
+    "last_campaign": "template2"
   },
   {
     "phone": "+919940361229",
@@ -794,10 +804,12 @@
     "last_name": "M",
     "drip_campaign": "Erickson_WhatsApp_Drip",
     "t1_sent_at": "2026-03-21T09:56:04.580238",
-    "last_step_sent": 1,
-    "next_step": 2,
-    "next_send_at": "2026-03-22T09:56:04.580238",
-    "next_campaign": "template2"
+    "last_step_sent": 2,
+    "next_step": 3,
+    "next_send_at": "2026-03-24T09:56:04.580238",
+    "next_campaign": "template3",
+    "last_sent_at": "2026-03-23T09:49:52.213020",
+    "last_campaign": "template2"
   },
   {
     "phone": "+911157047416",
@@ -806,10 +818,12 @@
     "last_name": "Homps",
     "drip_campaign": "Erickson_WhatsApp_Drip",
     "t1_sent_at": "2026-03-21T09:56:07.457018",
-    "last_step_sent": 1,
-    "next_step": 2,
-    "next_send_at": "2026-03-22T09:56:07.457018",
-    "next_campaign": "template2"
+    "last_step_sent": 2,
+    "next_step": 3,
+    "next_send_at": "2026-03-24T09:56:07.457018",
+    "next_campaign": "template3",
+    "last_sent_at": "2026-03-23T09:49:52.213020",
+    "last_campaign": "template2"
   },
   {
     "phone": "+5491157047416",
@@ -818,10 +832,12 @@
     "last_name": "Homps",
     "drip_campaign": "Erickson_WhatsApp_Drip",
     "t1_sent_at": "2026-03-21T09:56:10.335589",
-    "last_step_sent": 1,
-    "next_step": 2,
-    "next_send_at": "2026-03-22T09:56:10.335589",
-    "next_campaign": "template2"
+    "last_step_sent": 2,
+    "next_step": 3,
+    "next_send_at": "2026-03-24T09:56:10.335589",
+    "next_campaign": "template3",
+    "last_sent_at": "2026-03-23T09:49:52.213020",
+    "last_campaign": "template2"
   },
   {
     "phone": "+918451909591",
@@ -830,10 +846,12 @@
     "last_name": "Gupta",
     "drip_campaign": "Erickson_WhatsApp_Drip",
     "t1_sent_at": "2026-03-21T09:56:13.196413",
-    "last_step_sent": 1,
-    "next_step": 2,
-    "next_send_at": "2026-03-22T09:56:13.196413",
-    "next_campaign": "template2"
+    "last_step_sent": 2,
+    "next_step": 3,
+    "next_send_at": "2026-03-24T09:56:13.196413",
+    "next_campaign": "template3",
+    "last_sent_at": "2026-03-23T09:49:52.213020",
+    "last_campaign": "template2"
   },
   {
     "phone": "+918008078371",
@@ -842,10 +860,12 @@
     "last_name": "Abhi",
     "drip_campaign": "Erickson_WhatsApp_Drip",
     "t1_sent_at": "2026-03-21T09:56:16.074780",
-    "last_step_sent": 1,
-    "next_step": 2,
-    "next_send_at": "2026-03-22T09:56:16.074780",
-    "next_campaign": "template2"
+    "last_step_sent": 2,
+    "next_step": 3,
+    "next_send_at": "2026-03-24T09:56:16.074780",
+    "next_campaign": "template3",
+    "last_sent_at": "2026-03-23T09:49:52.213020",
+    "last_campaign": "template2"
   },
   {
     "phone": "+917619407761",
@@ -854,10 +874,12 @@
     "last_name": "Ravishankar",
     "drip_campaign": "Erickson_WhatsApp_Drip",
     "t1_sent_at": "2026-03-21T09:56:21.909349",
-    "last_step_sent": 1,
-    "next_step": 2,
-    "next_send_at": "2026-03-22T09:56:21.909349",
-    "next_campaign": "template2"
+    "last_step_sent": 2,
+    "next_step": 3,
+    "next_send_at": "2026-03-24T09:56:21.909349",
+    "next_campaign": "template3",
+    "last_sent_at": "2026-03-23T09:49:52.213020",
+    "last_campaign": "template2"
   },
   {
     "phone": "+919840734825",
@@ -866,10 +888,12 @@
     "last_name": "Narayanan",
     "drip_campaign": "Erickson_WhatsApp_Drip",
     "t1_sent_at": "2026-03-21T09:56:24.787216",
-    "last_step_sent": 1,
-    "next_step": 2,
-    "next_send_at": "2026-03-22T09:56:24.787216",
-    "next_campaign": "template2"
+    "last_step_sent": 2,
+    "next_step": 3,
+    "next_send_at": "2026-03-24T09:56:24.787216",
+    "next_campaign": "template3",
+    "last_sent_at": "2026-03-23T09:49:52.213020",
+    "last_campaign": "template2"
   },
   {
     "phone": "+918790948847",
@@ -878,10 +902,12 @@
     "last_name": "Agarwal",
     "drip_campaign": "Erickson_WhatsApp_Drip",
     "t1_sent_at": "2026-03-21T09:56:27.686869",
-    "last_step_sent": 1,
-    "next_step": 2,
-    "next_send_at": "2026-03-22T09:56:27.686869",
-    "next_campaign": "template2"
+    "last_step_sent": 2,
+    "next_step": 3,
+    "next_send_at": "2026-03-24T09:56:27.686869",
+    "next_campaign": "template3",
+    "last_sent_at": "2026-03-23T09:49:52.213020",
+    "last_campaign": "template2"
   },
   {
     "phone": "+917353767319",
@@ -890,10 +916,12 @@
     "last_name": "P",
     "drip_campaign": "Erickson_WhatsApp_Drip",
     "t1_sent_at": "2026-03-21T09:56:30.545175",
-    "last_step_sent": 1,
-    "next_step": 2,
-    "next_send_at": "2026-03-22T09:56:30.545175",
-    "next_campaign": "template2"
+    "last_step_sent": 2,
+    "next_step": 3,
+    "next_send_at": "2026-03-24T09:56:30.545175",
+    "next_campaign": "template3",
+    "last_sent_at": "2026-03-23T09:49:52.213020",
+    "last_campaign": "template2"
   },
   {
     "phone": "+917414027909",
@@ -902,10 +930,12 @@
     "last_name": "jain",
     "drip_campaign": "Erickson_WhatsApp_Drip",
     "t1_sent_at": "2026-03-21T09:56:33.411908",
-    "last_step_sent": 1,
-    "next_step": 2,
-    "next_send_at": "2026-03-22T09:56:33.411908",
-    "next_campaign": "template2"
+    "last_step_sent": 2,
+    "next_step": 3,
+    "next_send_at": "2026-03-24T09:56:33.411908",
+    "next_campaign": "template3",
+    "last_sent_at": "2026-03-23T09:49:52.213020",
+    "last_campaign": "template2"
   },
   {
     "phone": "+919845119628",
@@ -914,10 +944,12 @@
     "last_name": "C",
     "drip_campaign": "Erickson_WhatsApp_Drip",
     "t1_sent_at": "2026-03-21T09:56:39.178328",
-    "last_step_sent": 1,
-    "next_step": 2,
-    "next_send_at": "2026-03-22T09:56:39.178328",
-    "next_campaign": "template2"
+    "last_step_sent": 2,
+    "next_step": 3,
+    "next_send_at": "2026-03-24T09:56:39.178328",
+    "next_campaign": "template3",
+    "last_sent_at": "2026-03-23T09:49:52.213020",
+    "last_campaign": "template2"
   },
   {
     "phone": "+919681535945",
@@ -926,10 +958,12 @@
     "last_name": "Shaw",
     "drip_campaign": "Erickson_WhatsApp_Drip",
     "t1_sent_at": "2026-03-21T09:56:42.052302",
-    "last_step_sent": 1,
-    "next_step": 2,
-    "next_send_at": "2026-03-22T09:56:42.052302",
-    "next_campaign": "template2"
+    "last_step_sent": 2,
+    "next_step": 3,
+    "next_send_at": "2026-03-24T09:56:42.052302",
+    "next_campaign": "template3",
+    "last_sent_at": "2026-03-23T09:49:52.213020",
+    "last_campaign": "template2"
   },
   {
     "phone": "+14255488097",
@@ -938,10 +972,12 @@
     "last_name": "Kabani",
     "drip_campaign": "Erickson_WhatsApp_Drip",
     "t1_sent_at": "2026-03-21T09:56:44.933423",
-    "last_step_sent": 1,
-    "next_step": 2,
-    "next_send_at": "2026-03-22T09:56:44.933423",
-    "next_campaign": "template2"
+    "last_step_sent": 2,
+    "next_step": 3,
+    "next_send_at": "2026-03-24T09:56:44.933423",
+    "next_campaign": "template3",
+    "last_sent_at": "2026-03-23T09:49:52.213020",
+    "last_campaign": "template2"
   },
   {
     "phone": "+917981435892",
@@ -950,10 +986,12 @@
     "last_name": "Chimakurthy",
     "drip_campaign": "Erickson_WhatsApp_Drip",
     "t1_sent_at": "2026-03-21T09:56:50.738130",
-    "last_step_sent": 1,
-    "next_step": 2,
-    "next_send_at": "2026-03-22T09:56:50.738130",
-    "next_campaign": "template2"
+    "last_step_sent": 2,
+    "next_step": 3,
+    "next_send_at": "2026-03-24T09:56:50.738130",
+    "next_campaign": "template3",
+    "last_sent_at": "2026-03-23T09:49:52.213020",
+    "last_campaign": "template2"
   },
   {
     "phone": "+917703873062",
@@ -962,10 +1000,12 @@
     "last_name": "Basu",
     "drip_campaign": "Erickson_WhatsApp_Drip",
     "t1_sent_at": "2026-03-21T09:56:53.617705",
-    "last_step_sent": 1,
-    "next_step": 2,
-    "next_send_at": "2026-03-22T09:56:53.617705",
-    "next_campaign": "template2"
+    "last_step_sent": 2,
+    "next_step": 3,
+    "next_send_at": "2026-03-24T09:56:53.617705",
+    "next_campaign": "template3",
+    "last_sent_at": "2026-03-23T09:49:52.213020",
+    "last_campaign": "template2"
   },
   {
     "phone": "+918390731100",
@@ -974,10 +1014,12 @@
     "last_name": "kadam",
     "drip_campaign": "Erickson_WhatsApp_Drip",
     "t1_sent_at": "2026-03-21T09:56:56.495072",
-    "last_step_sent": 1,
-    "next_step": 2,
-    "next_send_at": "2026-03-22T09:56:56.495072",
-    "next_campaign": "template2"
+    "last_step_sent": 2,
+    "next_step": 3,
+    "next_send_at": "2026-03-24T09:56:56.495072",
+    "next_campaign": "template3",
+    "last_sent_at": "2026-03-23T09:49:52.213020",
+    "last_campaign": "template2"
   },
   {
     "phone": "+919948149044",
@@ -986,10 +1028,12 @@
     "last_name": "ANNAMRAJU",
     "drip_campaign": "Erickson_WhatsApp_Drip",
     "t1_sent_at": "2026-03-21T09:56:59.371528",
-    "last_step_sent": 1,
-    "next_step": 2,
-    "next_send_at": "2026-03-22T09:56:59.371528",
-    "next_campaign": "template2"
+    "last_step_sent": 2,
+    "next_step": 3,
+    "next_send_at": "2026-03-24T09:56:59.371528",
+    "next_campaign": "template3",
+    "last_sent_at": "2026-03-23T09:49:52.213020",
+    "last_campaign": "template2"
   },
   {
     "phone": "+919850509366",
@@ -998,10 +1042,12 @@
     "last_name": "Lalwani",
     "drip_campaign": "Erickson_WhatsApp_Drip",
     "t1_sent_at": "2026-03-21T09:57:02.285796",
-    "last_step_sent": 1,
-    "next_step": 2,
-    "next_send_at": "2026-03-22T09:57:02.285796",
-    "next_campaign": "template2"
+    "last_step_sent": 2,
+    "next_step": 3,
+    "next_send_at": "2026-03-24T09:57:02.285796",
+    "next_campaign": "template3",
+    "last_sent_at": "2026-03-23T09:49:52.213020",
+    "last_campaign": "template2"
   },
   {
     "phone": "+919810409546",
@@ -1010,10 +1056,12 @@
     "last_name": "Chawla",
     "drip_campaign": "Erickson_WhatsApp_Drip",
     "t1_sent_at": "2026-03-21T09:57:05.151182",
-    "last_step_sent": 1,
-    "next_step": 2,
-    "next_send_at": "2026-03-22T09:57:05.151182",
-    "next_campaign": "template2"
+    "last_step_sent": 2,
+    "next_step": 3,
+    "next_send_at": "2026-03-24T09:57:05.151182",
+    "next_campaign": "template3",
+    "last_sent_at": "2026-03-23T09:49:52.213020",
+    "last_campaign": "template2"
   },
   {
     "phone": "+919019055466",
@@ -1022,10 +1070,12 @@
     "last_name": "Raj S P",
     "drip_campaign": "Erickson_WhatsApp_Drip",
     "t1_sent_at": "2026-03-21T09:57:10.936505",
-    "last_step_sent": 1,
-    "next_step": 2,
-    "next_send_at": "2026-03-22T09:57:10.936505",
-    "next_campaign": "template2"
+    "last_step_sent": 2,
+    "next_step": 3,
+    "next_send_at": "2026-03-24T09:57:10.936505",
+    "next_campaign": "template3",
+    "last_sent_at": "2026-03-23T09:49:52.213020",
+    "last_campaign": "template2"
   },
   {
     "phone": "+919881992269",
@@ -1034,10 +1084,12 @@
     "last_name": "Jadhav",
     "drip_campaign": "Erickson_WhatsApp_Drip",
     "t1_sent_at": "2026-03-21T09:57:13.814474",
-    "last_step_sent": 1,
-    "next_step": 2,
-    "next_send_at": "2026-03-22T09:57:13.814474",
-    "next_campaign": "template2"
+    "last_step_sent": 2,
+    "next_step": 3,
+    "next_send_at": "2026-03-24T09:57:13.814474",
+    "next_campaign": "template3",
+    "last_sent_at": "2026-03-23T09:49:52.213020",
+    "last_campaign": "template2"
   },
   {
     "phone": "+918691991631",
@@ -1046,10 +1098,12 @@
     "last_name": "Sebastian",
     "drip_campaign": "Erickson_WhatsApp_Drip",
     "t1_sent_at": "2026-03-21T09:57:16.674665",
-    "last_step_sent": 1,
-    "next_step": 2,
-    "next_send_at": "2026-03-22T09:57:16.674665",
-    "next_campaign": "template2"
+    "last_step_sent": 2,
+    "next_step": 3,
+    "next_send_at": "2026-03-24T09:57:16.674665",
+    "next_campaign": "template3",
+    "last_sent_at": "2026-03-23T09:49:52.213020",
+    "last_campaign": "template2"
   },
   {
     "phone": "+971509357876",
@@ -1058,10 +1112,12 @@
     "last_name": "Ramesh",
     "drip_campaign": "Erickson_WhatsApp_Drip",
     "t1_sent_at": "2026-03-21T09:57:19.560700",
-    "last_step_sent": 1,
-    "next_step": 2,
-    "next_send_at": "2026-03-22T09:57:19.560700",
-    "next_campaign": "template2"
+    "last_step_sent": 2,
+    "next_step": 3,
+    "next_send_at": "2026-03-24T09:57:19.560700",
+    "next_campaign": "template3",
+    "last_sent_at": "2026-03-23T09:49:52.213020",
+    "last_campaign": "template2"
   },
   {
     "phone": "+918073752164",
@@ -1070,10 +1126,12 @@
     "last_name": "Narrasimha",
     "drip_campaign": "Erickson_WhatsApp_Drip",
     "t1_sent_at": "2026-03-22T09:43:55.282236",
-    "last_step_sent": 1,
-    "next_step": 2,
-    "next_send_at": "2026-03-23T09:43:55.282236",
-    "next_campaign": "template2"
+    "last_step_sent": 2,
+    "next_step": 3,
+    "next_send_at": "2026-03-25T09:43:55.282236",
+    "next_campaign": "template3",
+    "last_sent_at": "2026-03-23T09:49:52.213020",
+    "last_campaign": "template2"
   },
   {
     "phone": "+918265001896",
@@ -1082,10 +1140,12 @@
     "last_name": "Warke",
     "drip_campaign": "Erickson_WhatsApp_Drip",
     "t1_sent_at": "2026-03-22T09:43:58.157778",
-    "last_step_sent": 1,
-    "next_step": 2,
-    "next_send_at": "2026-03-23T09:43:58.157778",
-    "next_campaign": "template2"
+    "last_step_sent": 2,
+    "next_step": 3,
+    "next_send_at": "2026-03-25T09:43:58.157778",
+    "next_campaign": "template3",
+    "last_sent_at": "2026-03-23T09:49:52.213020",
+    "last_campaign": "template2"
   },
   {
     "phone": "+919899042905",
@@ -1094,10 +1154,12 @@
     "last_name": "Sharma",
     "drip_campaign": "Erickson_WhatsApp_Drip",
     "t1_sent_at": "2026-03-22T09:44:01.031089",
-    "last_step_sent": 1,
-    "next_step": 2,
-    "next_send_at": "2026-03-23T09:44:01.031089",
-    "next_campaign": "template2"
+    "last_step_sent": 2,
+    "next_step": 3,
+    "next_send_at": "2026-03-25T09:44:01.031089",
+    "next_campaign": "template3",
+    "last_sent_at": "2026-03-23T09:49:52.213020",
+    "last_campaign": "template2"
   },
   {
     "phone": "+919871483706",
@@ -1106,10 +1168,12 @@
     "last_name": "HASAN",
     "drip_campaign": "Erickson_WhatsApp_Drip",
     "t1_sent_at": "2026-03-22T09:44:03.926010",
-    "last_step_sent": 1,
-    "next_step": 2,
-    "next_send_at": "2026-03-23T09:44:03.926010",
-    "next_campaign": "template2"
+    "last_step_sent": 2,
+    "next_step": 3,
+    "next_send_at": "2026-03-25T09:44:03.926010",
+    "next_campaign": "template3",
+    "last_sent_at": "2026-03-23T09:49:52.213020",
+    "last_campaign": "template2"
   },
   {
     "phone": "+916379215101",
@@ -1118,10 +1182,12 @@
     "last_name": "Ps",
     "drip_campaign": "Erickson_WhatsApp_Drip",
     "t1_sent_at": "2026-03-22T09:44:06.793259",
-    "last_step_sent": 1,
-    "next_step": 2,
-    "next_send_at": "2026-03-23T09:44:06.793259",
-    "next_campaign": "template2"
+    "last_step_sent": 2,
+    "next_step": 3,
+    "next_send_at": "2026-03-25T09:44:06.793259",
+    "next_campaign": "template3",
+    "last_sent_at": "2026-03-23T09:49:52.213020",
+    "last_campaign": "template2"
   },
   {
     "phone": "+918554012846",
@@ -1130,10 +1196,12 @@
     "last_name": "KANASE",
     "drip_campaign": "Erickson_WhatsApp_Drip",
     "t1_sent_at": "2026-03-22T09:44:09.669832",
-    "last_step_sent": 1,
-    "next_step": 2,
-    "next_send_at": "2026-03-23T09:44:09.669832",
-    "next_campaign": "template2"
+    "last_step_sent": 2,
+    "next_step": 3,
+    "next_send_at": "2026-03-25T09:44:09.669832",
+    "next_campaign": "template3",
+    "last_sent_at": "2026-03-23T09:49:52.213020",
+    "last_campaign": "template2"
   },
   {
     "phone": "+918299868271",
@@ -1142,10 +1210,12 @@
     "last_name": "Yadav",
     "drip_campaign": "Erickson_WhatsApp_Drip",
     "t1_sent_at": "2026-03-22T09:44:12.544253",
-    "last_step_sent": 1,
-    "next_step": 2,
-    "next_send_at": "2026-03-23T09:44:12.544253",
-    "next_campaign": "template2"
+    "last_step_sent": 2,
+    "next_step": 3,
+    "next_send_at": "2026-03-25T09:44:12.544253",
+    "next_campaign": "template3",
+    "last_sent_at": "2026-03-23T09:49:52.213020",
+    "last_campaign": "template2"
   },
   {
     "phone": "+918817392232",
@@ -1154,10 +1224,12 @@
     "last_name": "Thakur",
     "drip_campaign": "Erickson_WhatsApp_Drip",
     "t1_sent_at": "2026-03-22T09:44:15.406578",
-    "last_step_sent": 1,
-    "next_step": 2,
-    "next_send_at": "2026-03-23T09:44:15.406578",
-    "next_campaign": "template2"
+    "last_step_sent": 2,
+    "next_step": 3,
+    "next_send_at": "2026-03-25T09:44:15.406578",
+    "next_campaign": "template3",
+    "last_sent_at": "2026-03-23T09:49:52.213020",
+    "last_campaign": "template2"
   },
   {
     "phone": "+919677962583",
@@ -1166,10 +1238,12 @@
     "last_name": "Ishlin",
     "drip_campaign": "Erickson_WhatsApp_Drip",
     "t1_sent_at": "2026-03-22T09:44:18.299610",
-    "last_step_sent": 1,
-    "next_step": 2,
-    "next_send_at": "2026-03-23T09:44:18.299610",
-    "next_campaign": "template2"
+    "last_step_sent": 2,
+    "next_step": 3,
+    "next_send_at": "2026-03-25T09:44:18.299610",
+    "next_campaign": "template3",
+    "last_sent_at": "2026-03-23T09:49:52.213020",
+    "last_campaign": "template2"
   },
   {
     "phone": "+917207039991",
@@ -1178,10 +1252,12 @@
     "last_name": "Verma",
     "drip_campaign": "Erickson_WhatsApp_Drip",
     "t1_sent_at": "2026-03-22T09:44:21.151880",
-    "last_step_sent": 1,
-    "next_step": 2,
-    "next_send_at": "2026-03-23T09:44:21.151880",
-    "next_campaign": "template2"
+    "last_step_sent": 2,
+    "next_step": 3,
+    "next_send_at": "2026-03-25T09:44:21.151880",
+    "next_campaign": "template3",
+    "last_sent_at": "2026-03-23T09:49:52.213020",
+    "last_campaign": "template2"
   },
   {
     "phone": "+918850669866",
@@ -1190,10 +1266,12 @@
     "last_name": "Patil",
     "drip_campaign": "Erickson_WhatsApp_Drip",
     "t1_sent_at": "2026-03-22T09:44:24.037454",
-    "last_step_sent": 1,
-    "next_step": 2,
-    "next_send_at": "2026-03-23T09:44:24.037454",
-    "next_campaign": "template2"
+    "last_step_sent": 2,
+    "next_step": 3,
+    "next_send_at": "2026-03-25T09:44:24.037454",
+    "next_campaign": "template3",
+    "last_sent_at": "2026-03-23T09:49:52.213020",
+    "last_campaign": "template2"
   },
   {
     "phone": "+919698723464",
@@ -1202,10 +1280,12 @@
     "last_name": "ETHURAJ",
     "drip_campaign": "Erickson_WhatsApp_Drip",
     "t1_sent_at": "2026-03-22T09:44:29.764571",
-    "last_step_sent": 1,
-    "next_step": 2,
-    "next_send_at": "2026-03-23T09:44:29.764571",
-    "next_campaign": "template2"
+    "last_step_sent": 2,
+    "next_step": 3,
+    "next_send_at": "2026-03-25T09:44:29.764571",
+    "next_campaign": "template3",
+    "last_sent_at": "2026-03-23T09:49:52.213020",
+    "last_campaign": "template2"
   },
   {
     "phone": "+919820181563",
@@ -1214,9 +1294,131 @@
     "last_name": "Chhugani",
     "drip_campaign": "Erickson_WhatsApp_Drip",
     "t1_sent_at": "2026-03-22T09:44:32.653800",
+    "last_step_sent": 2,
+    "next_step": 3,
+    "next_send_at": "2026-03-25T09:44:32.653800",
+    "next_campaign": "template3",
+    "last_sent_at": "2026-03-23T09:49:52.213020",
+    "last_campaign": "template2"
+  },
+  {
+    "phone": "+917710044275",
+    "lead_id": "3406196000049630001",
+    "first_name": "depall",
+    "last_name": "bherwani",
+    "drip_campaign": "Erickson_WhatsApp_Drip",
+    "t1_sent_at": "2026-03-23T09:49:18.440211",
     "last_step_sent": 1,
     "next_step": 2,
-    "next_send_at": "2026-03-23T09:44:32.653800",
+    "next_send_at": "2026-03-24T09:49:18.440211",
+    "next_campaign": "template2"
+  },
+  {
+    "phone": "+919920029445",
+    "lead_id": "3406196000049618001",
+    "first_name": "Samual",
+    "last_name": "Machado",
+    "drip_campaign": "Erickson_WhatsApp_Drip",
+    "t1_sent_at": "2026-03-23T09:49:21.345527",
+    "last_step_sent": 1,
+    "next_step": 2,
+    "next_send_at": "2026-03-24T09:49:21.345527",
+    "next_campaign": "template2"
+  },
+  {
+    "phone": "+918826406565",
+    "lead_id": "3406196000049596001",
+    "first_name": "Preity",
+    "last_name": "K",
+    "drip_campaign": "Erickson_WhatsApp_Drip",
+    "t1_sent_at": "2026-03-23T09:49:24.216836",
+    "last_step_sent": 1,
+    "next_step": 2,
+    "next_send_at": "2026-03-24T09:49:24.216836",
+    "next_campaign": "template2"
+  },
+  {
+    "phone": "+919426530184",
+    "lead_id": "3406196000049594030",
+    "first_name": "Krishna",
+    "last_name": "P",
+    "drip_campaign": "Erickson_WhatsApp_Drip",
+    "t1_sent_at": "2026-03-23T09:49:27.104507",
+    "last_step_sent": 1,
+    "next_step": 2,
+    "next_send_at": "2026-03-24T09:49:27.104507",
+    "next_campaign": "template2"
+  },
+  {
+    "phone": "+919836004333",
+    "lead_id": "3406196000049594001",
+    "first_name": "Sanchita",
+    "last_name": "Dutta",
+    "drip_campaign": "Erickson_WhatsApp_Drip",
+    "t1_sent_at": "2026-03-23T09:49:30.002209",
+    "last_step_sent": 1,
+    "next_step": 2,
+    "next_send_at": "2026-03-24T09:49:30.002209",
+    "next_campaign": "template2"
+  },
+  {
+    "phone": "+919886477396",
+    "lead_id": "3406196000049592059",
+    "first_name": "Poonam",
+    "last_name": "Sharma",
+    "drip_campaign": "Erickson_WhatsApp_Drip",
+    "t1_sent_at": "2026-03-23T09:49:32.886782",
+    "last_step_sent": 1,
+    "next_step": 2,
+    "next_send_at": "2026-03-24T09:49:32.886782",
+    "next_campaign": "template2"
+  },
+  {
+    "phone": "+918617424823",
+    "lead_id": "3406196000049592030",
+    "first_name": "Rooplekha",
+    "last_name": "Das",
+    "drip_campaign": "Erickson_WhatsApp_Drip",
+    "t1_sent_at": "2026-03-23T09:49:35.757184",
+    "last_step_sent": 1,
+    "next_step": 2,
+    "next_send_at": "2026-03-24T09:49:35.757184",
+    "next_campaign": "template2"
+  },
+  {
+    "phone": "+916366296137",
+    "lead_id": "3406196000049590059",
+    "first_name": "Laveena",
+    "last_name": "Pinto",
+    "drip_campaign": "Erickson_WhatsApp_Drip",
+    "t1_sent_at": "2026-03-23T09:49:41.552287",
+    "last_step_sent": 1,
+    "next_step": 2,
+    "next_send_at": "2026-03-24T09:49:41.552287",
+    "next_campaign": "template2"
+  },
+  {
+    "phone": "+919164304321",
+    "lead_id": "3406196000049590030",
+    "first_name": "Snigdha",
+    "last_name": "Patel",
+    "drip_campaign": "Erickson_WhatsApp_Drip",
+    "t1_sent_at": "2026-03-23T09:49:44.449311",
+    "last_step_sent": 1,
+    "next_step": 2,
+    "next_send_at": "2026-03-24T09:49:44.449311",
+    "next_campaign": "template2"
+  },
+  {
+    "phone": "+919845129628",
+    "lead_id": "3406196000049588001",
+    "first_name": "Jennifer",
+    "last_name": "C",
+    "drip_campaign": "Erickson_WhatsApp_Drip",
+    "t1_sent_at": "2026-03-23T09:49:50.208356",
+    "last_step_sent": 1,
+    "next_step": 2,
+    "next_send_at": "2026-03-24T09:49:50.208356",
     "next_campaign": "template2"
   }
 ]
